@@ -68,7 +68,7 @@ function Contact(){
         
           <div className='App'>
             {/* <iframe src="https://web-1092.webnode.com.ar/widgets/googlemaps/?z=15&amp;a=12+Pike+St%2C+New+York%2C+NY%C2%A010002&amp;s=&amp;g=40.7136736%2C-73.9927513" style={{ border: 0 }} loading="lazy"></iframe> */}
-            <img src={contact} width="30%" />
+            {/* <img src={contact} width="30%" /> */}
             
            <header>
             <form style={{padding: '10px', paddingBottom: '100px'}}>

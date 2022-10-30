@@ -1,9 +1,13 @@
 import style from '../Styling/style.css'
+import {Navigate, Link} from 'react-router-dom'
 function Footer(){
     return(
         <div className="footer">
-            <li>Contact Us</li>
-            <li>About Us</li>
+            <ul>
+            <span><Link to="/Contact">Contact</Link></span>
+            <span><Link to="/About">About</Link></span>
+            </ul>
+            
         </div>
     )
 }
