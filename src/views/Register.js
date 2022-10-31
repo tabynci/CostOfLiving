@@ -119,7 +119,7 @@ function Register(props){
                  <button className="regBtn" onClick={handleError}>Register</button><br></br><br></br>
                     </form>
                  </header>
-                <div className='register'>
+                <div className='registers'>
                     <h3>
                         Already Customer <span></span> <Link to="/login">Sign In</Link> <br></br>
                     </h3>

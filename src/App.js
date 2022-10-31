@@ -15,31 +15,14 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
 import Users from './views/Users';
+
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [location, setLocation] = useState('')
   const [admin, setAdmin]=useState('n')
-
-  // const getLoggedIn=async function fetchData(){
-  //   const main = "";
-  //   if(main){
-  //      var data = await axios.post("http://localhost:3005", {username:username, password:password})
-  //      if(data.status === 200){
-  //       setLoggedIn(true)
-  //      } else {
-  //       setLoggedIn(false)
-  //   } 
-  //  }
-  // }
-  // useEffect(() => {
-  //   getLoggedIn();
-  // }, [])
-
-
-
-  
 
   return (
     <div>

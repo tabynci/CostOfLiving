@@ -27,7 +27,7 @@ function Home(){
     }
 
     const containerStyle = {
-        width: '1000px',
+        width: '1005px',
         height: '700px'
       };
 
@@ -53,7 +53,9 @@ function Home(){
     }, [])
 
     function setNewCity() {
+      console.log(location.state)
       setCity(location.state);
+
       if(city){
         cities.filter(citi => {
           if(citi.city_name.toUpperCase()===city.toUpperCase()){
@@ -76,7 +78,8 @@ function Home(){
     });
 
     return isLoaded ? (
-        <GoogleMap
+      <div className="borderStyle">
+      <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
           zoom={zoom}
@@ -85,7 +88,9 @@ function Home(){
         >
           { /* Child components, such as markers, info windows, etc. */ }
           <></>
-        </GoogleMap> 
+        </GoogleMap>
+      </div>
+         
       ) : <></>;
 }
 
