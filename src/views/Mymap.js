@@ -4,13 +4,9 @@ import { useLocation } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import axios from "axios";
 
-function Home(){
-    const location = useLocation();
+function Mymap(props){
     const [cities, setCities]=useState([])
     const [city, setCity] = useState();
-    const [zoom] = useState(10);
-    // eslint-disable-next-line
-    const [map, setMap] = React.useState(null)
 
     const getCities= async function() {        
         try{
@@ -18,9 +14,9 @@ function Home(){
             headers :{
                 'X-RapidAPI-Key': 'f183a42a81mshceb2974bf064e57p1137d8jsna883237c0e88'
             }
+            
         })
-        setCities(data.data.cities)
-        // console.log(data.data);
+        console.log(data.data);
         }catch(e){
             console.log(e)
         }
@@ -30,6 +26,8 @@ function Home(){
         width: '1000px',
         height: '700px'
       };
+
+    const [map, setMap] = React.useState(null)
 
     const [center, setCenter]=useState({
         lat:53.3498053,
@@ -42,44 +40,40 @@ function Home(){
     })
 
     const onLoad = React.useCallback(function callback(map) {
-        //const bounds = new window.google.maps.LatLngBounds(center);
-        //map.fitBounds(bounds);
-        map.setZoom(zoom)
+        const bounds = new window.google.maps.LatLngBounds(center);
+        map.fitBounds(bounds);
         setMap(map)
-    }, [zoom])
+    }, [])
     
     const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
     }, [])
 
-    function setNewCity() {
-      setCity(location.state);
-      if(city){
-        cities.filter(citi => {
-          if(citi.city_name.toUpperCase()===city.toUpperCase()){
-            //console.log('match: ' + citi)
-            setCenter({
-              lat: citi.lat,
-              lng: citi.lng
-            })
-          }
-          return citi
-        });
-      }
-    //location.state = '';
-      //console.log(center)
+    function setCity() {
+        city = useLocation().state;
+    //     cities.filter(city => {
+    //     if(city.city_name===useLocation().state){
+    //       console.log('match: ' + city)
+    //     //   setCenter({
+    //     //     lat: city.lat,
+    //     //     lng: city.lng
+    //     //   })
+    //     }
+    //   });
     }
+
+    // console.log(u)
 
     useEffect(()=>{
         getCities(); 
-        setNewCity();
-    });
+        setCity();
+    },[]);
 
     return isLoaded ? (
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={zoom}
+          zoom={2}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
@@ -87,6 +81,13 @@ function Home(){
           <></>
         </GoogleMap> 
       ) : <></>;
+
+
+    // return(
+    //     <div>
+    //         Here goes map
+    //     </div>
+    // );
 }
 
-export default Home;
+export default Mymap;

@@ -6,7 +6,7 @@ import Cities from './Cities';
 const cors = require("cors");
 
 function Mainpage(props){
-   
+   console.log(props);
    
       const [city_name, setCityName] = useState('')
       const [country_name, setCountry] = useState('')

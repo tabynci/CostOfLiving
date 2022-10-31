@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios';
 import {Navigate, Link} from 'react-router-dom'
 
@@ -7,8 +7,9 @@ function Login(props){
    const [message, setMessage] = useState('')
    const [username, setUsername] = useState('')
    const [password, setPassword] = useState('')
-    const[admin, setAdmin]=useState('n')
     const [error, setError]=useState('');
+    const [logInUser,setLogIn] =useState(false)
+    const [adminUser,setaAdminUser] =useState('n')
    function handleUsernameInput(e){
       e.preventDefault()
       setUsername(e.target.value)
@@ -24,40 +25,39 @@ function Login(props){
   if(username && password ){
   try{
     var data = await axios.post("http://localhost:3005/login",{username:username, password:password })
-    console.log(data.data.result[0])
-        props.setLoggedIn(true)
-        props.setAdmin(data.data.result[0].admin)
 
-               console.log(data.data.result[0].admin)
-                setAdmin(data.data.result[0].admin)
+        props.setLoggedIn(true)
+        props.setAdmin(data.data.result[0].admin) 
+        setLogIn(true)
+        setaAdminUser(data.data.result[0].admin)
+    // console.log(data.data.result[0])
 
      } catch(error) {
-      
       console.log(error)
 }
 }
-     
-      
 }
   function handleError(e){
     e.preventDefault()
     setMessage("Enter all details")
   }
 
-  if(props.loggedIn &&  admin==='n'){
+  
+  if(logInUser &&  adminUser==='n'){
     console.log(props.loggedIn +'09')
       return(
           <Navigate to="/Mainpage" />
       )
   } 
-  else{
-    if( admin=='y' && !props.loggedIn){
+  
+  else if(logInUser && adminUser=='y'){
       console.log(props.loggedIn +'98')
       return(
-          <Navigate to="/AdminDashboard" />
+          <Navigate to="/Dashboard" />
       )
     }
-    else if(!username === "" && !password === ""){
+ 
+   else if(!username === "" && !password === ""){
         return(
           <div className='loginDiv'>
              <div className='login'>
@@ -125,5 +125,5 @@ function Login(props){
     }
       
   }
- }
+ 
  export default Login;
