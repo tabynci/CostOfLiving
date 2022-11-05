@@ -133,8 +133,76 @@
 
 /* User Dashboard */
 .DasbordUser{
-    font-size: 22px;
-    font-weight: bold;
-    
-
+    font-size: 18px;
+  
+    text-align: center;
+   
 }
+.Profile{
+    border: 5px solid rgb(55, 50, 37);
+    width: 50%;
+    text-align: left;
+   margin-left: 50em;
+   background-color: rgb(236, 231, 224);
+    padding-bottom: 30px;
+}
+
+.profile-logo{
+    text-align: center;
+}
+.profile-button{
+
+background-color: rgb(21, 7, 23);
+ border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 2em;
+  border-radius: 20em;
+  
+}
+.user-profile{
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bolder;
+}
+
+.ProfileDiv{
+    background-color: rgb(205, 234, 245);
+    padding-top: 20px;
+    padding-bottom:20px ;
+}
+
+/* User page */
+.user-div{
+    border: 20px;
+}
+
+/* Mainpage */
+.Mainpage-input{
+font-size: medium;
+font-size: 18px;
+}
+
+.mainpage{
+    margin-left: 2em;
+   
+}
+
+.Mainpage-input-red{
+    color:red;
+    font-size: 18px;
+   
+}
+.mainpage-input-button{
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-radius: 20px;
+    color:rgb(231, 231, 239);
+    background-color: rgb(41, 114, 10);
+}
+

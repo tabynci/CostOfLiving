@@ -101,26 +101,19 @@ function Mainpage(props){
     }
     );
 
-    // const getUser=async function(){
-    //     const main = "";
-    //     var data = await axios.post("http://localhost:3005/login",{username:username, password:password })
-    //     setUsername(data.data.username)
-    //     setPassword(data.data.password)
-    // } 
-    // useEffect(() =>{
-    //     getUser();
-    // })
     
     props.token()
     if(localStorage.getItem("token")){
       
         return(
             <div>
-                <div>
-                    <p>Please serch city</p>
-                    <input type="text" value={city_name} onChange={handleSearchCity} placeholder="search city"></input>
-                    <input type="text" value={country_name} onChange={handleSearchCountry} placeholder="search country"></input>
-                    <button name='search' onClick={handleSubmit}>Search</button>
+                <div className='mainpage'>
+                    <p  className='Mainpage-input'> Enter a city and country name in the input box. It will display a useful information of the city.</p>
+                    <label className='Mainpage-input-red'>Please Enter City Name</label><br/>
+                    <input type="text" className='Mainpage-input' value={city_name} onChange={handleSearchCity} placeholder="City name"></input><br/>
+                    <label className='Mainpage-input-red'>Please Enter Country Name</label><br/>
+                    <input type="text"  className='Mainpage-input' value={country_name} onChange={handleSearchCountry} placeholder="Country Name"></input><br/><br/>
+                    <button className='mainpage-input-button' name='search' onClick={handleSubmit}>Search</button><br></br>
                 </div>
                 <div>                
                     {itemprice}

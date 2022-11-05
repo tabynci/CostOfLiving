@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import { update } from "lodash";
-
+import ProfileImg from '../images/ProfileImg.png'
 
 function Profile(props){
 
@@ -129,24 +129,38 @@ if(password!=='' && ConfirmPassword!=='' && password===ConfirmPassword  ){
 
 if(localStorage.getItem("token")){
 return (
-    <div className="DasbordUser">
-     <div className="col">
-        <label>UserName</label>
-        <input type="text" value={username} onChange={handleUsernameInput} ></input><br></br>
-        <label>email</label>
-        <input type="text" value={email} onChange={handleEmailInput} ></input><br></br>
-        <label>Age</label>
-        <input type="text" value={age} onChange={handleAgeInput}></input><br></br>
-        <label>Password</label>
-        <input type="text" value={password} onChange={handlePasswordInput}></input><br></br>
-        <br/>
-        <label>Confirm Password</label>
-        <input type="text" value={ConfirmPassword} onChange={handleConfirmPasswordInput}></input><br></br>
-        <br/>
-        <p>{msg}</p>
-        <button onClick={handleUpdate}>Update</button>
+    <div className="ProfileDiv">
+    <div className="Profile">
+        <p className="user-profile">User profile</p>
+        <div className="profile-logo">
+            
+               <img src={ProfileImg} width="10%" />
         </div>
-    </div>)
+
+         <div className="DasbordUser">
+            
+            <label className="input-padding">UserName</label><br></br>
+            <input type="text" className="input-padding" value={username} onChange={handleUsernameInput} ></input><br></br>
+            <label>email</label><br></br>
+            <input type="email" value={email} onChange={handleEmailInput} ></input><br></br>
+            <label>Age</label><br></br>
+            <input type="text" value={age} onChange={handleAgeInput}></input><br></br>
+            <label>Password</label><br></br>
+            <input type="text" value={password} onChange={handlePasswordInput}></input><br></br>
+            
+            <label>Confirm Password</label><br></br>
+            <input type="text" value={ConfirmPassword} onChange={handleConfirmPasswordInput}></input><br></br>
+            <br></br>
+            <p>{msg}</p>
+            <button className="profile-button" onClick={handleUpdate}>Update</button>
+            </div>
+            
+        </div>
+        <span>&#36;</span>
+        
+
+    </div>
+   )
 }
 }
   

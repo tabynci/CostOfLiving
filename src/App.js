@@ -50,7 +50,7 @@ else{
          <Route path ="/Logout" element={<Logout token={token}/>} />
          <Route path ="/About" element={<About />} />
          <Route path ="/Contact" element={<Contact />} />
-         <Route path ="/Compare" element={<Compare />} />
+         <Route path ="/Compare" element={<Compare token={token} />} />
 
          <Route path ="/Dashboard" element={<Dashboard token={token} location={location}/>} />
          <Route path ="/Users" element={<Users token={token}/>} />

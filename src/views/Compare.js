@@ -7,14 +7,16 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { set } from "lodash";
+import { propTypes } from "react-bootstrap/esm/Image";
 const cors = require("cors");
-function Compare(){
+function Compare(props){
     const [host, setHost] = useState('')
     const [foreign, setforeign] = useState('')
     const [city1Prices, setCity1Prices]=useState([])
     const [city2Prices, setCity2Prices]=useState([])
     const [categories, setCategories]=useState([])
 
+    props.token();
     //https://softwareengineering.stackexchange.com/questions/433640/in-javascript-how-is-awaiting-the-result-of-an-async-different-than-sync-calls
 
     function handlechange1(e){
@@ -101,7 +103,7 @@ function Compare(){
                     <div><p className="text">Select another city Name </p></div>
                     <div>
                     <select className="dropdown" onChange={handlechange2}>
-                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
                 <option value="Bengaluru">Bengaluru</option>
                 <option value="Mumbai">Mumbai</option>
                     </select>
@@ -132,8 +134,8 @@ function Compare(){
                                 return pr.category_name==category.category_name && pr.item_name==category.item_name})[0].usd
                         return (<tr> <td >{category.category_name}</td>
                                 <td>{category.item_name}</td>
-                            <td>Minimum:{city1?city1.min:0}<br></br>Maximun:{city1?city1.max:0}</td>
-                            <td>Minimum:{city2?city2.min:0}<br></br>Maximun:{city2?city2.max:0}</td>
+                            <td>Minimum: <span>&#36;</span>{city1?city1.min:0}<br></br>Maximun: <span>&#36;</span>{city1?city1.max:0}</td>
+                            <td>Minimum: <span>&#36;</span>{city2?city2.min:0}<br></br>Maximun: <span>&#36;</span>{city2?city2.max:0}</td>
                         </tr>);
                         }})
                     }
