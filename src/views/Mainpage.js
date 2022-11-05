@@ -3,16 +3,15 @@ import axios from 'axios'
 import _ from 'lodash'
 import {Navigate} from 'react-router-dom'
 import Cities from './Cities';
+import React from 'react';
 const cors = require("cors");
 
 function Mainpage(props){
-   console.log(props);
+
    
       const [city_name, setCityName] = useState('')
       const [country_name, setCountry] = useState('')
       const [country_id, setCountryID] = useState('')
-  
-      
       const [prices, setPrices]=useState([])
       const [item_name, setItemName] =useState('')
         const [max, setMax] =useState('')
@@ -21,6 +20,7 @@ function Mainpage(props){
         const [username, setUsername] = useState('')
         const [password, setPassword] = useState('')
         const [error, setError]=useState('');
+        
 
       function handleSearchCity(e){ //when user enters value this function is called out
           e.preventDefault()
@@ -30,10 +30,10 @@ function Mainpage(props){
         e.preventDefault()
         setCountry(e.target.value)
        }
-       
+    
     const getCitiesPrices= async function() {
        
-      
+       if(city_name && country_name){
         try{
             var data= await axios.get("https://cost-of-living-and-prices.p.rapidapi.com/prices",{
             headers :{
@@ -41,27 +41,21 @@ function Mainpage(props){
             },
             params:{city_name:city_name, country_name:country_name}
         })
-       
-         setPrices(data.data.prices)
-         
-        // console.log(prices)
-        //setCityName(data.city_name)
-        
-        //setCountry(data.country_name)
-        // console.log(data.country_name)
-        //setCategory(data.data.prices.category_name)
-        
-        // console.log(data)
-        // console.log(prices)
-        
-        // console.log(_.groupBy(data.data.prices, 'category_name')[0])
-            }catch(error){
+       if(data.status==200){
+        setPrices(data.data.prices)
+       }else{
+        console.log(data)
+       }
+         }catch(error){
             console.log(error)
         }
+       }
+      
+        
         }
          useEffect(()=>{
         getCitiesPrices();
-        },[]);
+        },[prices]);
 
         function handleSubmit(e){
         e.preventDefault();
@@ -74,40 +68,37 @@ function Mainpage(props){
 
             }     
         setCategoryGroup(_.groupBy(prices, 'category_name'))
-    //  for(let key of Object.keys(category_group)){
-    //     console.log(Object.keys(_.groupBy(prices, 'category_name')))
-    //  }
-    //   console.log(Object.keys(_.groupBy(prices, 'category_name')))
-
-        // for(let key of Object.keys(category_group)){
-        //     console.log(key);
-        //     for(let value of category_group[key]){
-        //         console.log(value.item_name);
-        //     }
-        // }
 
      };
 
-     function catprice(key){ 
-        return  category_group[key].map((price) => 
-            
-          <div>
+    function catprice(category,categoryName){ 
+        return  category_group[category].map((price, id) => {
+            return(
+            <span>
             <p>Item: {price.item_name}</p>
             <p>Maximum Price: {price.max}</p>
             <p>Minimum Price: {price.min}</p>  
-          </div>
-                    )
+            </span>)
+        })
     };
 
-     const itemprice = Object.keys(category_group).map((key, i) => 
+    function showContent(e){
+        e.preventDefault();
+        const element = document.getElementById(e.target.name);
+        element.style.display=="none" ? element.style.display="" : element.style.display="none"
+    }
+
+    const itemprice = Object.keys(category_group).map((category) => {
         // console.log(category_group[key])
-        
+        const categoryName = category.replaceAll(' ','');
+        return(
         <div>
-        <h4><a  href='#' >{key} {category_group[key].length}</a></h4>
-            <div>
-                {catprice(key)}
+        <h4>{category} {category_group[category].length}</h4><button name={categoryName} onClick={showContent}>Show/Hide</button>
+            <div id={categoryName}>
+                {catprice(category,categoryName)}
             </div>
-        </div> 
+        </div> )
+    }
     );
 
     // const getUser=async function(){
@@ -120,31 +111,24 @@ function Mainpage(props){
     //     getUser();
     // })
     
-
-    if(props.loggedIn){
-        
+    props.token()
+    if(localStorage.getItem("token")){
+      
         return(
             <div>
-                    <div>
+                <div>
                     <p>Please serch city</p>
                     <input type="text" value={city_name} onChange={handleSearchCity} placeholder="search city"></input>
                     <input type="text" value={country_name} onChange={handleSearchCountry} placeholder="search country"></input>
-                    <button type='text' name='button' onClick={handleSubmit}>button</button>
+                    <button name='search' onClick={handleSubmit}>Search</button>
                 </div>
-                <div> 
+                <div>                
                     {itemprice}
                 </div> 
                 <div>
                     <Cities  city_name={city_name} country={country_name}/>
                 </div>
-
-                
-
-               
-
             </div>
-            
-                
                )}else{
                 <Navigate to="/" />
                }

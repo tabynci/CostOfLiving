@@ -8,8 +8,10 @@ function Login(props){
    const [username, setUsername] = useState('')
    const [password, setPassword] = useState('')
     const [error, setError]=useState('');
-    const [logInUser,setLogIn] =useState(false)
-    const [adminUser,setaAdminUser] =useState('n')
+    const [loggedIn,setLoggedIn] =useState('false')
+    const [admin,setAdmin] =useState('n')
+
+    
    function handleUsernameInput(e){
       e.preventDefault()
       setUsername(e.target.value)
@@ -22,15 +24,19 @@ function Login(props){
   }
  async function handleSubmit(e){
   e.preventDefault()
-  if(username && password ){
-  try{
-    var data = await axios.post("http://localhost:3005/login",{username:username, password:password })
 
-        props.setLoggedIn(true)
-        props.setAdmin(data.data.result[0].admin) 
-        setLogIn(true)
-        setaAdminUser(data.data.result[0].admin)
-    // console.log(data.data.result[0])
+  if(username && password ){
+    
+  try{
+
+    var data = await axios.post("http://localhost:3005/login",{username:username, password:password })
+       localStorage.setItem("token",data.data.result[0]?'true':'false')
+       localStorage.setItem("admin",data.data.result[0].admin)
+        localStorage.setItem("id", data.data.result[0].id)
+        setLoggedIn(data.data.result[0]?'true':'false')
+        setAdmin(data.data.result[0].admin)
+        props.token()
+    
 
      } catch(error) {
       console.log(error)
@@ -42,16 +48,16 @@ function Login(props){
     setMessage("Enter all details")
   }
 
-  
-  if(logInUser &&  adminUser==='n'){
-    console.log(props.loggedIn +'09')
+  if(loggedIn === 'true' && admin.toUpperCase() === 'N'  ){
+    
+    console.log(loggedIn +'09')
       return(
           <Navigate to="/Mainpage" />
       )
   } 
   
-  else if(logInUser && adminUser=='y'){
-      console.log(props.loggedIn +'98')
+  else if(loggedIn==='true' && admin==='y'){
+      console.log(loggedIn +'98')
       return(
           <Navigate to="/Dashboard" />
       )
@@ -123,7 +129,7 @@ function Login(props){
             
            )
     }
-      
+
   }
  
  export default Login;

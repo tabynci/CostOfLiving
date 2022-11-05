@@ -31,7 +31,18 @@
     padding-left: 750px;
 }
 .height{
-   height: 80px;
+   height: 100px;
+}
+
+.dasboard-padding{
+    margin-left: 70em;
+}
+/* Admin navbar */
+.logoIMG{
+    
+    /* padding-right: 50px; */
+    padding-left: 100px;
+    
 }
 
 @media only screen and (min-width: 600px) {
@@ -50,7 +61,10 @@
 
     /* Home */
     
-
+/* Sidebar */
+/* .sidebar{
+    margin-top: 30;
+} */
 
 
 
@@ -88,4 +102,39 @@
     background-color: antiquewhite;
    
   
+}
+
+/* compare */
+.compare{
+    font-style: normal;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 40px;
+}
+.text{
+    float:left;
+    padding-left:30em ;
+}
+.dropdown{
+    float:left;
+   
+}
+.buttonCompare{
+    padding-left:100em ;
+}
+
+.compareHeading{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+/* User Dashboard */
+.DasbordUser{
+    font-size: 22px;
+    font-weight: bold;
+    
+
 }

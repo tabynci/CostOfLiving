@@ -38,7 +38,7 @@
 }
 
 
-/* Dashboard */
+/* Admin Dashboard */
 html,
 body {
   margin: 0;
@@ -52,18 +52,19 @@ body {
 #page-wrap {
   text-align: center;
   overflow: auto;
+ 
 }
 
 .bm-item {
   display: inline-block;
   text-decoration: none;
   margin-bottom: 10px;
-  color: #d1d1d1;
+  color: #f3f3f3;
   transition: color 0.2s;
 }
 
 .bm-item:hover {
-  color: white;
+  color: rgb(32, 6, 6);
 }
 
 .bm-burger-button {
@@ -75,7 +76,7 @@ body {
 }
 
 .bm-burger-bars {
-  background: #373a47;
+  background: #f5f7f8;
 }
 
 .bm-cross-button {
@@ -84,21 +85,21 @@ body {
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background: #e9f0f4;
 }
 
 .bm-menu {
-  background: #373a47;
+  background: #47484e;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
 
 .bm-morph-shape {
-  fill: #d7dae5;
+  fill: #c3cae0;
 }
 
 .bm-item-list {
-  color: #b8b7ad;
+  color: #e6e4de;
 }
 
 .bm-overlay {
@@ -127,3 +128,6 @@ body {
     
   }
 }
+
+
+/* Comapre */

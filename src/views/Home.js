@@ -4,13 +4,14 @@ import { useLocation } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import axios from "axios";
 
-function Home(){
+function Home(props){
     const location = useLocation();
     const [cities, setCities]=useState([])
     const [city, setCity] = useState();
     const [zoom] = useState(10);
     // eslint-disable-next-line
     const [map, setMap] = React.useState(null)
+    props.token();
 
     const getCities= async function() {        
         try{
@@ -53,13 +54,13 @@ function Home(){
     }, [])
 
     function setNewCity() {
-      console.log(location.state)
+      // console.log(location.state)
       setCity(location.state);
 
       if(city){
         cities.filter(citi => {
           if(citi.city_name.toUpperCase()===city.toUpperCase()){
-            //console.log('match: ' + citi)
+            console.log('match: ' + citi.city_id)
             setCenter({
               lat: citi.lat,
               lng: citi.lng
