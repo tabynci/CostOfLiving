@@ -37,7 +37,7 @@ function Cities(props){
         }
 
         const filtered = cities.filter(city => {
-            console.log(city)
+            // console.log(city)
             if(city.country_name === 'Ireland' && city.city_name==='Dublin')
                 return city 
           });

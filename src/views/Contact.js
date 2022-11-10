@@ -1,6 +1,7 @@
 //https://www.pngkey.com/download/u2w7u2o0o0e6e6i1_contact-me-contact-button-for-website/  image for contact us
 import {useState} from 'react'
 import contact from '../images/contact.jpeg'
+
 function Contact(){
     
    const [message, setMessage] = useState('')
@@ -34,12 +35,11 @@ function Contact(){
     setUsername("")
     setEmail("")
     setText("")
-  
-}
+  }
   if(!username == "" && !email == "" && !text == ""){
       return(
-        <div className='App'>
-           
+        <div className='contact-div'>
+             <img src={contact} width="30%" />
            <header>
             <form style={{padding: '10px', paddingBottom: '100px'}}>
            
@@ -66,24 +66,24 @@ function Contact(){
   } else{
       return(
         
-          <div className='App'>
-            {/* <iframe src="https://web-1092.webnode.com.ar/widgets/googlemaps/?z=15&amp;a=12+Pike+St%2C+New+York%2C+NY%C2%A010002&amp;s=&amp;g=40.7136736%2C-73.9927513" style={{ border: 0 }} loading="lazy"></iframe> */}
-            {/* <img src={contact} width="30%" /> */}
+          <div className='contact-div'>
+           
+            <img src={contact} width="30%" />
             
            <header>
-            <form style={{padding: '10px', paddingBottom: '100px'}}>
+            <form style={{padding: '10px'}}>
             
               <h4 style={{color:'red'}}> {message} </h4>
            <br/>
-           <label>UserName</label> <br/><br/>
+           <label>UserName</label> <br/>
            <input type="text" value={username} onChange={handleUsernameInput} />
-           <br/><br />
-           <label>Email</label> <br/><br/> 
+           <br/>
+           <label>Email</label> <br/>
            <input type='email' value={email} onChange={handleEmailInput} />
-           <br/> <br />
-         <label>Message</label> <br/><br/>
+           <br/>
+         <label>Message</label> <br/>
            <textarea rows = "5" cols = "50" value={text} name = "description" onChange={handleTextInput}>
-         </textarea> <br/><br/>
+         </textarea> <br/><br></br>
            <button onClick={handleError}>Submit</button>
            <br/> <br />
             </form>

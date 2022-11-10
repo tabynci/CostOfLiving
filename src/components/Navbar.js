@@ -47,16 +47,13 @@ const [admin, setAdmin] =useState('n')
       </nav>
           </div>
         );
-
-   
-  }
-  else if(loggedIn=='true' && admin.toUpperCase()=='Y'){
+} else if(loggedIn=='true' && admin.toUpperCase()=='Y'){
   
    
     return(
       <div className="container-fluid fluid-padding height">
       <nav className="navbar navbar-expand-lg bg height">
-      <div className="container-fluid">
+      <div className="container-fluid div-width shawdow">
         <a className="navbar-brand logoIMG" href="#"><img src={logo} height="60px" width="120px" ></img></a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

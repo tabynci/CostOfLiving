@@ -1,4 +1,4 @@
-.App {
+/* /* .App {
   text-align: center;
 }
 
@@ -26,7 +26,7 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
-
+ */
 
 /* Admin Dashboard */
 html,
@@ -111,23 +111,23 @@ body {
 /* Media query */
 
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
   .App {
     text-align: center;
     background-image: url(./images/logo.jpg);
     height: 700px;
     
   }
-} 
+}  */
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 991px) {
+/* @media only screen and (max-width: 991px) {
   .App {
     text-align: center;
     background-image: url(./images/logo.jpg);
     height: 700px;
     
   }
-}
+} */
 
 
 /* Comapre */

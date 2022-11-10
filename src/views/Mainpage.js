@@ -1,10 +1,14 @@
+// https://www.pngitem.com/middle/ixTTomR_city-town-bilding-bild-landscape-background-nature-hong/
+
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import _ from 'lodash'
 import {Navigate} from 'react-router-dom'
 import Cities from './Cities';
 import React from 'react';
-const cors = require("cors");
+import city from '../images/city.jpeg';
+
+
 
 function Mainpage(props){
 
@@ -106,13 +110,17 @@ function Mainpage(props){
     if(localStorage.getItem("token")){
       
         return(
-            <div>
+            
+            <div className='main'>
+                <div className='image-main'>
+                <img src={city} height="300px" width="600px" ></img>
+                </div>
                 <div className='mainpage'>
-                    <p  className='Mainpage-input'> Enter a city and country name in the input box. It will display a useful information of the city.</p>
-                    <label className='Mainpage-input-red'>Please Enter City Name</label><br/>
-                    <input type="text" className='Mainpage-input' value={city_name} onChange={handleSearchCity} placeholder="City name"></input><br/>
-                    <label className='Mainpage-input-red'>Please Enter Country Name</label><br/>
-                    <input type="text"  className='Mainpage-input' value={country_name} onChange={handleSearchCountry} placeholder="Country Name"></input><br/><br/>
+                    <p  className='Mainpage-input'> Please enter a city and country name in the input box. It will display a useful information of the city.</p>
+                    <label className='Mainpage-input-red'> City Name</label><br/>
+                    <input type="text" className='Mainpage-input' value={city_name} onChange={handleSearchCity} placeholder="Enter City name"></input><br/>
+                    <label className='Mainpage-input-red'>Country Name</label><br/>
+                    <input type="text"  className='Mainpage-input' value={country_name} onChange={handleSearchCountry} placeholder=" Enter Country Name"></input><br/><br/>
                     <button className='mainpage-input-button' name='search' onClick={handleSubmit}>Search</button><br></br>
                 </div>
                 <div>                

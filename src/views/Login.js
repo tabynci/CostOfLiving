@@ -24,21 +24,20 @@ function Login(props){
   }
  async function handleSubmit(e){
   e.preventDefault()
-
+  console.log(username, password)
   if(username && password ){
     
   try{
 
-    var data = await axios.post("http://localhost:3005/login",{username:username, password:password })
-       localStorage.setItem("token",data.data.result[0]?'true':'false')
-       localStorage.setItem("admin",data.data.result[0].admin)
-        localStorage.setItem("id", data.data.result[0].id)
-        setLoggedIn(data.data.result[0]?'true':'false')
-        setAdmin(data.data.result[0].admin)
+    var data = await axios.post("http://localhost:3005/Users/login",{username:username, password:password })
+       console.log(data);
+       localStorage.setItem("token",data.data[0]?'true':'false')
+       localStorage.setItem("admin",data.data[0].admin)
+        localStorage.setItem("id", data.data[0].id)
+        setLoggedIn(data.data[0]?'true':'false')
+        setAdmin(data.data[0].admin)
         props.token()
-    
-
-     } catch(error) {
+    } catch(error) {
       console.log(error)
 }
 }
@@ -82,7 +81,7 @@ function Login(props){
              <button className='logBtn' onClick={handleError}>Login</button>
              <br/> <br />
              <p>ForgotPassword click <span></span>
-             <Link to="/forgotPassword">ForgotPassword</Link></p>
+             <Link to="/ForgotPassword">ForgotPassword</Link></p>
              <br/>
              <div>
               <h4>Not a Customer 

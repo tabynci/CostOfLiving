@@ -11,6 +11,10 @@ function Home(props){
     const [zoom] = useState(10);
     // eslint-disable-next-line
     const [map, setMap] = React.useState(null)
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+
     props.token();
 
     const getCities= async function() {        
@@ -28,7 +32,7 @@ function Home(props){
     }
 
     const containerStyle = {
-        width: '1005px',
+        width: '1690px',
         height: '700px'
       };
 
@@ -80,6 +84,7 @@ function Home(props){
 
     return isLoaded ? (
       <div className="borderStyle">
+        
       <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -93,6 +98,7 @@ function Home(props){
       </div>
          
       ) : <></>;
+      
 }
 
 export default Home;

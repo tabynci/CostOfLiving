@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import SideBar from '../components/Sidebar';
 import Table from 'react-bootstrap/Table';
+import { set } from "lodash";
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
 function Users(props){
 
@@ -9,6 +10,8 @@ function Users(props){
 const [err, setErr]=useState('not connected');
 
 const [result, setResult]=useState([])
+const [users, setUsers]=useState([])
+const [id, setId]=useState('')
 props.token();
 
 const getAllUsers = async function(){
@@ -16,11 +19,37 @@ const getAllUsers = async function(){
     try {
         var data = await axios.get("http://localhost:3005/users")
         // console.log(data);
-        setResult(data.data.result)
+        setResult(data.data)
         // console.log(data.data.result);
         }catch(err){
         console.error(err);
     }
+}
+
+
+const deletUser =async (id)=>{
+    
+    try{
+        
+        var data =await axios.get("http://localhost:3005/users")
+     setId(
+        result.filter((user)=>{
+            return user.id!==id;
+        })
+     )
+    
+    }catch(error){
+        console.log(err)
+}
+
+}
+const deletePost=(id)=>{
+
+}
+
+function handleDelete(e){
+e.preventDefault();
+deletUser();
 }
 
 const viewUser=result.map(user=>{
@@ -31,12 +60,16 @@ const viewUser=result.map(user=>{
         <h4>Email:{user.email}</h4>
         <h4>Age:{user.age}</h4>
         <br/>
-        <button className="btn btn-lg btn-outline-danger ml-4">Delete</button>
+        <ul>
+        
+        </ul>
+     
          </div>
 });
 
 useEffect(()=>{
     getAllUsers();
+    deletUser();
     // viewUser();
 },[]);
 

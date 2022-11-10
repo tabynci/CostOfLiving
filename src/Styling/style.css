@@ -3,6 +3,20 @@
     background-color: rgb(213, 213, 24);
     
 }
+
+/* Footer */
+.main-footer {
+    color: rgb(45, 42, 42);
+    background-color: #f5efc9;
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+  }
+
+
+  /* Navbar */
 .bg{
     background-color: black;
 }
@@ -10,12 +24,12 @@
  
   font-style:italic;
     font-size: 20px;
-  
 }
 .shawdow{
     box-shadow:  0 5px;
-    
-}
+    }
+
+
 .div-width{
     width: 100%;
 }
@@ -23,20 +37,35 @@
     padding-right: 0%;
     padding-left: 0%;
 }
-.div-padding{
-    padding-left: 15em;
-    padding-right: 20px;
-}
+
 .center{
     padding-left: 750px;
 }
 .height{
-   height: 100px;
+   height: 100px; 
 }
 
 .dasboard-padding{
-    margin-left: 70em;
+    margin-left: 60em;
 }
+@media (min-width: 768px) {
+  
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  } 
+/* .div-padding{
+    padding-left: 5em;
+    padding-right: 5px;
+} */
+
 /* Admin navbar */
 .logoIMG{
     
@@ -45,20 +74,17 @@
     
 }
 
-@media only screen and (min-width: 600px) {
-    
-    }
-    
-    @media only screen and (max-width: 800px) {
-       
-      } 
+
     
       .borderStyle {
+
         border: 8px solid rgb(135, 206, 114) !important;
-        width: 102em;
+        width: 170.5em;
       } 
 
-
+.move-text{
+    margin-left: 200px;
+}
     /* Home */
     
 /* Sidebar */
@@ -115,7 +141,7 @@
 }
 .text{
     float:left;
-    padding-left:30em ;
+    padding-left:20em ;
 }
 .dropdown{
     float:left;
@@ -192,7 +218,9 @@ font-size: 18px;
     margin-left: 2em;
    
 }
-
+.image-main{
+ padding-left: 60em;
+}
 .Mainpage-input-red{
     color:red;
     font-size: 18px;
@@ -206,3 +234,16 @@ font-size: 18px;
     background-color: rgb(41, 114, 10);
 }
 
+/* Contact  */
+.contact-div{
+height: 800px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    }
+
+    /* About */
+    .About{
+        font-size: 18px;
+        height: 800px;
+    }
