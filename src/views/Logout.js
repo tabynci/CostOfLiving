@@ -1,8 +1,8 @@
 import {Navigate} from 'react-router-dom'
 
 function Logout(props){
-localStorage.removeItem('token')
-localStorage.removeItem('admin')
+sessionStorage.removeItem('token')
+sessionStorage.removeItem('admin')
 props.token();
   return(
    <Navigate to="/" />

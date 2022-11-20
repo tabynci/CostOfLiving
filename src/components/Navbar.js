@@ -7,9 +7,10 @@ import {useState, useEffect} from 'react'
 
 import {Navigate, Link} from 'react-router-dom'
 function Navbar(props) {
-
+console.log(props)
 const [loggedIn, setLoggedIn] =useState('false')
 const [admin, setAdmin] =useState('n')
+
   useEffect(() =>{
     setLoggedIn(props.loggedIn)
     setAdmin(props.admin)
@@ -29,6 +30,9 @@ const [admin, setAdmin] =useState('n')
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active text-light item-font" aria-current="page" to="/Mainpage">MainPage</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/Compare">Compare</Link>
@@ -86,16 +90,12 @@ const [admin, setAdmin] =useState('n')
               <li className="nav-item">
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/">Home</Link>
               </li>
-              
               <li className="nav-item">
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/Register">Register</Link>
               </li>
-              
               <li className="nav-item">
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/Login">Login</Link>
               </li>
-             
-              
               <li className="nav-item">
                 <a className="nav-link" href="#">Link</a>
               </li>

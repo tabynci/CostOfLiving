@@ -3,6 +3,7 @@ import axios from 'axios'
 import SideBar from '../components/Sidebar';
 import Table from 'react-bootstrap/Table';
 import { set } from "lodash";
+import e from "cors";
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
 function Users(props){
 
@@ -11,7 +12,8 @@ const [err, setErr]=useState('not connected');
 
 const [result, setResult]=useState([])
 const [users, setUsers]=useState([])
-const [id, setId]=useState('')
+
+// const [id, setId]=useState('')
 props.token();
 
 const getAllUsers = async function(){
@@ -27,30 +29,24 @@ const getAllUsers = async function(){
 }
 
 
-const deletUser =async (id)=>{
-    
+async function deletUser (e){
+    e.preventDefault();
     try{
-        
-        var data =await axios.get("http://localhost:3005/users")
-     setId(
-        result.filter((user)=>{
-            return user.id!==id;
-        })
-     )
+        // console.log("http://localhost:3005/users/"+e.target.id)
+        var data =await axios.delete("http://localhost:3005/users/"+e.target.id)
+
     
     }catch(error){
         console.log(err)
 }
 
 }
-const deletePost=(id)=>{
 
-}
 
-function handleDelete(e){
-e.preventDefault();
-deletUser();
-}
+// const deletePost=(id)=>{
+//     data.delete(`${id}`);
+//     setUsers()
+// }
 
 const viewUser=result.map(user=>{
     
@@ -61,7 +57,6 @@ const viewUser=result.map(user=>{
         <h4>Age:{user.age}</h4>
         <br/>
         <ul>
-        
         </ul>
      
          </div>
@@ -69,13 +64,9 @@ const viewUser=result.map(user=>{
 
 useEffect(()=>{
     getAllUsers();
-    deletUser();
+   
     // viewUser();
-},[]);
-
-
-
-
+},[deletUser]);
 
 // console.log(getAllUsers());
 
@@ -87,7 +78,6 @@ useEffect(()=>{
         <Table striped bordered hover>
                     <thead>
                         <tr>
-
                             <th>User Id</th>
                             <th>UserName</th>
                             <th>Email</th>
@@ -98,12 +88,12 @@ useEffect(()=>{
                     <tbody>
                     {
                         result.map((user)=>{
-                            
+                       
                         return (<tr><td >{user.id}</td>
                              <td >{user.username}</td>
                                 <td>{user.email}</td>
                             <td>{user.age}</td>
-                           <td> <button className="btn btn-lg btn-outline-danger ml-4">Delete</button></td>
+                           <td> <button onClick={deletUser} id={user.id} className="btn btn-lg btn-outline-danger ml-4">Delete</button></td>
                         </tr>);
                         })
                     }

@@ -19,7 +19,6 @@ function Search(){
         <div>
             <form className="d-flex" role="search">
           <input value={city_name} onChange={handleCityInput} className="form-control me-2 item-font" type="search" placeholder="Enter city name" aria-label="Search"></input>
-          
           <Link to="/" state={city_name}>Search City</Link>
         </form>
        

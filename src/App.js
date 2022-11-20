@@ -25,9 +25,9 @@ function App() {
 
 
   const token=function(){
-  if(localStorage.getItem("token")){
-  setLoggedIn(localStorage.getItem("token"))
-  setAdmin(localStorage.getItem("admin"))
+  if(sessionStorage.getItem("token")){
+    setLoggedIn(sessionStorage.getItem("token")?'true':'false')
+    setAdmin(sessionStorage.getItem("admin"))
   }
 else{
   setLoggedIn(false)
@@ -53,7 +53,7 @@ return (
             <Route path ="/Users" element={<Users token={token}/>} />
             <Route path ="/ForgotPassword" element={<ForgotPassword/>} />
          </Routes>
-       <Footer/>
+       <Footer loggedIn={loggedIn} admin={admin} />
      </div>
    </Router>
     </div>

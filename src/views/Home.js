@@ -3,7 +3,8 @@ import {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import axios from "axios";
-
+// Using Google map code
+// API KEY :    AIzaSyA1pgLxx1_ejr5w-T61ZOZA1eaYz7Hnhtc
 function Home(props){
     const location = useLocation();
     const [cities, setCities]=useState([])

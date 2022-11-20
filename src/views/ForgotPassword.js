@@ -14,7 +14,7 @@ function ForgotPassword(props){
     async function handleSubmit(e){
         e.preventDefault()
         try{
-          var data = await axios.post("http://localhost:3005/users/register", {
+          var data = await axios.post("http://localhost:3005/users", {
             email: email,
           })
             localStorage.setItem('token', data.data.token)
@@ -31,17 +31,18 @@ function ForgotPassword(props){
     }
    return(
     
-    <div>
+    <div className="forgotDiv">
+        <div className="forgotPassword ">
         <form>
             <h4>Password Reset</h4>
-        <label>Email</label><br/><br/>
+             <label>Email</label><br/><br/>
              <input type='email' value= {email} onChange={handleEmailInput} placeholder='abcd@gmail.com' required />
              <br/><br/>
              <button onClick={handleSubmit}>Submit</button><br/><br/>
              <h4>{message}</h4>
         </form>
-         
-        </div>
+         </div>
+     </div>
 
    )
 }

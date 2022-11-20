@@ -13,6 +13,7 @@ function Profile(props){
     const [password, setPassword] =useState('')
     const [msg, setMsg] =useState('')
     const [ConfirmPassword, setConfirmPassword]=useState('')
+
     function handleUsernameInput(e){
         e.preventDefault()
         setUsername(e.target.value)
@@ -37,14 +38,15 @@ function Profile(props){
 const viewProfile = async function(){
     
     try {
-        setId( localStorage.getItem("id"))
-       
-        var data = await axios.get("http://localhost:3005/users/"+localStorage.getItem("id"))
+        console.log(sessionStorage.getItem("id"))
+        setId(sessionStorage.getItem("id"))
+      
+        var data = await axios.get("http://localhost:3005/users/"+sessionStorage.getItem("id"))
         // console.log(data);
         return{
             result:data.data.result[0]
         }
-        // console.log(data.data.result);
+        console.log(data.data.result[0]);
         }catch(err){
         console.error(err);
     }
@@ -52,9 +54,8 @@ const viewProfile = async function(){
 
 function ProfileUser(){
     props.token()
-
-    viewProfile().then((value)=>{
-  
+     viewProfile().then((value)=>{
+    console.log(value.result.username)
     setUsername(value.result.username)
     setEmail(value.result.email)
     setAge(value.result.age)
@@ -62,34 +63,14 @@ function ProfileUser(){
 });
 }
 
-
 useEffect(()=>{
     ProfileUser();
 },[])
 
-// const updateProfile =async function(){
-//     console.log(data)
-//     try{
-//         var data=await axios.post("http://localhost:3005/user/" + localStorage.getItem("id"))
-//         console.log(data);
-//         return{
-//             result:data.data.result[0]
-//         }
-//     }
-//     catch(err){
-//         console.error(err);
-//     }
-// }
-
-
-
-
 const UpdateProfile = async function() {
-    
-   
     try {
-       
-        var data = await axios.post("http://localhost:3005/users/update",
+       console.log(data)
+        var data = await axios.put("http://localhost:3005/users/",
         {id:id, username:username,email:email,age:age, password:password})
     if(data.status==200){
     setMsg('User details updated succsesfully')
@@ -97,8 +78,7 @@ const UpdateProfile = async function() {
     else{
         setMsg('Error occured please try later')
     }
-        
-    }
+        }
     catch(error){
         console.log(error)
     }
@@ -106,11 +86,7 @@ const UpdateProfile = async function() {
 
     function UpdateUser(){
         console.log("updateUser")
-        // UpdateProfile().then((value)=>{
-        // setUsername(value.result.username)
-        // setEmail(value.result.email)
-        // setAge(value.result.age)});
-    }
+         }
 
 
 
@@ -127,7 +103,7 @@ if(password!=='' && ConfirmPassword!=='' && password===ConfirmPassword  ){
 }
   
 
-if(localStorage.getItem("token")){
+if(sessionStorage.getItem("token")){
 return (
     <div className="ProfileDiv">
     <div className="Profile">
@@ -147,8 +123,7 @@ return (
             <input type="text" value={age} onChange={handleAgeInput}></input><br></br>
             <label>Password</label><br></br>
             <input type="text" value={password} onChange={handlePasswordInput}></input><br></br>
-            
-            <label>Confirm Password</label><br></br>
+             <label>Confirm Password</label><br></br>
             <input type="text" value={ConfirmPassword} onChange={handleConfirmPasswordInput}></input><br></br>
             <br></br>
             <p>{msg}</p>

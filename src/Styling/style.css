@@ -3,6 +3,11 @@
     background-color: rgb(213, 213, 24);
     
 }
+.admin-footer{
+    background-color: #f5efc9;
+    font-size: 18px;
+    text-align: center;
+}
 
 /* Footer */
 .main-footer {
@@ -15,8 +20,7 @@
     display: flex;
   }
 
-
-  /* Navbar */
+ /* Navbar */
 .bg{
     background-color: black;
 }
@@ -24,6 +28,7 @@
  
   font-style:italic;
     font-size: 20px;
+    
 }
 .shawdow{
     box-shadow:  0 5px;
@@ -46,7 +51,7 @@
 }
 
 .dasboard-padding{
-    margin-left: 60em;
+    margin-left: 57em;
 }
 @media (min-width: 768px) {
   
@@ -74,24 +79,14 @@
     
 }
 
-
-    
-      .borderStyle {
-
-        border: 8px solid rgb(135, 206, 114) !important;
-        width: 170.5em;
+.borderStyle {
+    border: 8px solid rgb(135, 206, 114) !important;
+    width: 170.5em;
       } 
 
 .move-text{
     margin-left: 200px;
 }
-    /* Home */
-    
-/* Sidebar */
-/* .sidebar{
-    margin-top: 30;
-} */
-
 
 
 /* login */
@@ -107,11 +102,30 @@
     margin-left: 30em;
   
 }
+.register-header{
+    font-size: 20px;
+}
 
+.forgotPassword{
+    background-color: rgb(137, 225, 225);
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    height: 600px;
+    width: 400px;
+    border-radius: 20px;
+    margin-left: 30em;
+   }
+
+  .forgotDiv{
+    background-color: antiquewhite;
+    height: 850px;
+  }
 .loginDiv{
     background-color: antiquewhite;
     height: 850px;
 }
+/* Register Component */
 
 .register{
    background-color: aqua;
@@ -130,7 +144,7 @@
   
 }
 
-/* compare */
+/* compare Component */
 .compare{
     font-style: normal;
     font-weight: bold;
@@ -160,7 +174,6 @@
 /* User Dashboard */
 .DasbordUser{
     font-size: 18px;
-  
     text-align: center;
    
 }
@@ -216,15 +229,48 @@ font-size: 18px;
 
 .mainpage{
     margin-left: 2em;
+    text-align: center;
+     float:right;
+     height: 500px;
+    width: 800px;
+    position: absolute;
+     top: 14em;
+    left: 3px;
    
 }
+.Image-opacity{
+    opacity: 0.4;
+    margin: 3%;
+    position: relative;
+    width: 20px;
+    }
 .image-main{
- padding-left: 60em;
+ 
+ float: left;
+ margin-left: 30em;
+ position: absolute;
+     top: 10em;
+    left: 3px;
+   
+}
+.move-text{
+    position: absolute;
+     top: 10em;
+    left: 30px;
+
 }
 .Mainpage-input-red{
-    color:red;
-    font-size: 18px;
+    color:rgb(15, 15, 14);
+    font-size: 16px;
    
+}
+.category{
+    float: right;
+    margin-right: 35px;
+margin-top: 50px;
+background-color: #d5d811;
+
+
 }
 .mainpage-input-button{
     margin-bottom: 20px;
@@ -233,10 +279,12 @@ font-size: 18px;
     color:rgb(231, 231, 239);
     background-color: rgb(41, 114, 10);
 }
-
+.main{
+    height: 1000px;
+}
 /* Contact  */
 .contact-div{
-height: 800px;
+    height: 800px;
     text-align: center;
     font-size: 20px;
     font-weight: bolder;
@@ -247,3 +295,4 @@ height: 800px;
         font-size: 18px;
         height: 800px;
     }
+   
