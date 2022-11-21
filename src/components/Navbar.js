@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react'
 
 import {Navigate, Link} from 'react-router-dom'
 function Navbar(props) {
-console.log(props)
+// console.log(props)
 const [loggedIn, setLoggedIn] =useState('false')
 const [admin, setAdmin] =useState('n')
 

@@ -117,21 +117,9 @@ function Compare(props){
     function handleCompare(e){
         e.preventDefault();
 
-        console.log(city1Prices);
-        console.log(city2Prices);
-
-
-        // console.log(city1Prices.map((price) => {
-        //     if(price.category_name!=="Salaries And Financing" && price.category_name!=="Restaurants"){
-        //     return {
-        //         "category_name":price.category_name,
-        //         "item_name":price.item_name
-        //     }}
-        //     }))
-
-       
-           
-        setCategories(
+        // console.log(city1Prices);
+        // console.log(city2Prices);
+            setCategories(
             city1Prices.map((price) => {
                 if(price.category_name!=="Salaries And Financing"){
                     return {
@@ -151,43 +139,34 @@ function Compare(props){
             </div>
     
             <div className="compare">
-              
-                <div><p className="text">City Name:   </p></div>
-
-                <div>
+            <div><p className="text">City Name:   </p></div>
+            <div>
                     <select className="dropdown" onChange={handlechange1}>
-                   
-               
-                 <option value="⬇️ Select a city 1 ⬇️"> -- Select a city 1-- </option>
+                   <option value="⬇️ Select a city 1 ⬇️"> -- Select a city 1-- </option>
                  {city1Array.map((city1)=><option value={city1.value}>{city1.label}</option>)}
                     </select>
                     </div>
                     <div><p className="text">Another city Name:  </p></div>
                     <div>
-                        
                     <select className="dropdown" onChange={handlechange2}>
               
                 <option value="⬇️ Select a city 2 ⬇️"> -- Select a city 2 -- </option>
                 {city2Array.map((city2)=><option value={city2.value}>{city2.label}</option>)}
                     </select>
                     </div>
-               
-            </div>
-            <div className="buttonCompare">
+                    </div>
+                <div className="buttonCompare">
                 <button type="button" onClick={handleCompare} class="btn btn-success">Compare</button>
-                
-            </div>
+                </div>
             <div>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-
-                            <th>Categories</th>
+                             <th>Categories</th>
                             <th>Item</th>
                             <th>{host}</th>
                             <th>{foreign}</th>
-                            {/* <th>{city1}</th>
-                            <th>{city2}</th> */}
+                           
                         </tr>
                     </thead>
                     <tbody>

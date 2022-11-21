@@ -81,12 +81,7 @@ function Footer(props){
   else{
     return(
       <div className="footer">
-      {/* <ul>
-      <span><Link to="/Contact">Contact</Link></span>
-      <br></br>
-      <span><Link to="/About">About</Link></span>
-
-      </ul> */}
+    
 
 <div className="main-footer">
 <div className="container">
@@ -95,8 +90,7 @@ function Footer(props){
     <div className="col">
       <h2>Cost Of living and Expenses</h2>
       <h3 className="list-unstyled">
-        <li>+353(01)-000-000</li>
-        <li>LEIXLIP, IRELAND</li>
+         <li>LEIXLIP, IRELAND</li>
         <li>123 Streeet South North</li>
       </h3>
     </div>

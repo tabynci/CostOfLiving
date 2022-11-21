@@ -24,7 +24,7 @@ function Login(props){
   }
  async function handleSubmit(e){
   e.preventDefault()
-  console.log(username, password)
+
   if(username  && password ){
     
   try{

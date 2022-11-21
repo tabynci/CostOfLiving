@@ -1,13 +1,13 @@
 // https://www.pngkey.com/download/u2w7u2o0o0e6e6i1_contact-me-contact-button-for-website/  image for contact us
 import {useState} from 'react'
 import contact from '../images/contact.jpeg'
-
+import axios from 'axios';
 function Contact(){
     
-   const [message, setMessage] = useState('')
+   const [msg, setMsg] = useState('')
    const [username, setUsername] = useState('')
    const [email, setEmail] = useState('')
-   const [text, setText] = useState('')
+   const [message, setMessage] = useState('')
 
    function handleUsernameInput(e){
       e.preventDefault()
@@ -17,63 +17,50 @@ function Contact(){
       e.preventDefault()
       setEmail(e.target.value)
   }
-  function handleTextInput(e){
+  function handleMessageInput(e){
     e.preventDefault()
-    setText(e.target.value)
+    setMessage(e.target.value)
 }
- function handleSubmit(e){
+ async function handleSubmit(e){
       e.preventDefault()
-      setMessage("We will contact you soon")
-      setUsername("")
-      setEmail("")
-      setText("")
-    
-  }
-  function handleError(e){
-    e.preventDefault()
-    setMessage("Please enter all the details")
-    setUsername("")
-    setEmail("")
-    setText("")
-  }
-  if(!username == "" && !email == "" && !text == ""){
-      return(
-        <div className='contact-div'>
-             <img src={contact} width="30%" />
-           <header>
-            <form style={{padding: '10px', paddingBottom: '100px'}}>
-           
+     if(!username == "" && !email == "" && !message == ""){
+        try{
               
-                <br></br>
-                <h4>{message}</h4>
-           <label>UserName</label> <br/><br/>
-           <input type="text" value={username} onChange={handleUsernameInput} />
-           <br/><br />
-           <label>Email</label> <br/><br/> 
-           <input type='email' value={email} onChange={handleEmailInput} />
-           <br/> <br /> 
-           <label>Message</label> <br/><br/>
-           <textarea rows = "3" cols = "50" value={text} name = "description" onChange={handleTextInput}>
-         </textarea> <br/><br/>
-           <br/> <br />
-           <button onClick={handleSubmit}>Submit</button>
-           <br/> <br />
-            </form>
-           </header>
-           </div>
-         
-      )
-  } else{
+          var data = await axios.post("http://localhost:3005/Users/contact", {
+          username: username,
+          email:email,
+          message: message
+      
+      }).then((response)=>{
+          console.log(response)
+          setMsg("we will conatct you soon")
+          setUsername("")
+          setEmail("")
+          setMessage("")
+      })
+      
+      } catch(e) {
+          if(e.response.status === 400){
+              setMsg(e.response.data.message)
+          } else {
+              setMsg("An error occured please try again later")
+          }
+      }
+
+      }else{
+        setMsg("please fill all the fields")
+      }
+  
+    }
       return(
         
           <div className='contact-div'>
            
-            <img src={contact} width="30%" />
+            <img src={contact} width="20%" />
             
            <header>
-            <form style={{padding: '10px'}}>
-            
-              <h4 style={{color:'red'}}> {message} </h4>
+            <form>
+            <h4 style={{color:'red'}}> {msg} </h4>
            <br/>
            <label>UserName</label> <br/>
            <input type="text" value={username} onChange={handleUsernameInput} />
@@ -82,9 +69,9 @@ function Contact(){
            <input type='email' value={email} onChange={handleEmailInput} />
            <br/>
          <label>Message</label> <br/>
-           <textarea rows = "5" cols = "50" value={text} name = "description" onChange={handleTextInput}>
+           <textarea rows = "5" cols = "50" value={message} name = "description" onChange={handleMessageInput}>
          </textarea> <br/><br></br>
-           <button onClick={handleError}>Submit</button>
+           <button onClick={handleSubmit}>Submit</button>
            <br/> <br />
             </form>
            </header>
@@ -93,6 +80,6 @@ function Contact(){
           
           
       )
-  }
+  
  }
  export default Contact;

@@ -41,7 +41,7 @@ const viewProfile = async function(){
         console.log(sessionStorage.getItem("id"))
         setId(sessionStorage.getItem("id"))
       
-        var data = await axios.get("http://localhost:3005/users/"+sessionStorage.getItem("id"))
+        var data = await axios.post("http://localhost:3005/users/profile", {token: sessionStorage.getItem("token")})
         // console.log(data);
         return{
             result:data.data.result[0]
@@ -67,11 +67,13 @@ useEffect(()=>{
     ProfileUser();
 },[])
 
+
+
 const UpdateProfile = async function() {
     try {
-       console.log(data)
-        var data = await axios.put("http://localhost:3005/users/",
-        {id:id, username:username,email:email,age:age, password:password})
+       console.log( {username:username,email:email,age:age, password:password})
+        var data = await axios.put("http://localhost:3005/users/update",
+        {token: sessionStorage.getItem("token"), user:{username:username,email:email,age:age, password:password}})
     if(data.status==200){
     setMsg('User details updated succsesfully')
     }
@@ -84,27 +86,15 @@ const UpdateProfile = async function() {
     }
 }
 
-    function UpdateUser(){
-        console.log("updateUser")
-         }
-
-
-
- 
-  function handleUpdate(e){
-
+ function handleUpdate(e){
     e.preventDefault()
-if(password!=='' && ConfirmPassword!=='' && password===ConfirmPassword  ){
-    
-    UpdateProfile()
-}else{
-    setMsg('invalid password ')
-}
-}
+    UpdateProfile();
+    }
   
 
 if(sessionStorage.getItem("token")){
 return (
+
     <div className="ProfileDiv">
     <div className="Profile">
         <p className="user-profile">User profile</p>
@@ -135,6 +125,7 @@ return (
         
 
     </div>
+    
    )
 }
 }
