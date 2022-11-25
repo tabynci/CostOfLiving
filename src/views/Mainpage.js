@@ -95,8 +95,11 @@ function Mainpage(props){
         return(
             
             <div className='main'>
-                <p className='Mainpage-input'> Please enter a city and country name in the input box. It will display a useful information of the city.</p><br></br>
-                <div className='image-main'>
+                <h1>Cost Of Living and Expenses</h1>
+                <p className='Mainpage-input'> Cost of Living and Expenses is an international database.Information on seconds on :buying an apartment, Mortgage Costs, Transportaion, Salaries and Financing, Restaurants, Childcare</p><br></br>
+                
+                
+            <div className='image-main'>
                <img src={m} width="500px"></img>
                 </div>
                 <div className='mainpage'>

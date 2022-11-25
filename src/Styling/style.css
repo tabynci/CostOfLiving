@@ -125,6 +125,10 @@
     background-color: antiquewhite;
     height: 800px;
 }
+.required-field::after {
+    content: "*";
+    color: red;
+}
 /* Register Component */
 
 .register{
@@ -169,6 +173,7 @@
     font-size: 20px;
     font-weight: bolder;
 }
+
 
 /* User Dashboard */
 .DasbordUser{
@@ -233,9 +238,7 @@ font-size: 18px;
      height: 500px;
      width: 100em;
     position: absolute;
-     top: 18em;
-
-   
+     top: 20em;
 }
 .Image-opacity{
     opacity: 0.4;
@@ -248,7 +251,7 @@ font-size: 18px;
  float: left;
  margin-left: 30em;
  position: absolute;
-     top: 13em;
+     top: 20em;
     left: 3px;
    
 }
@@ -261,8 +264,7 @@ font-size: 18px;
 .Mainpage-input-red{
     color:rgb(15, 15, 14);
     font-size: 16px;
-   
-}
+   }
 
 .category{
     float: right;
@@ -280,7 +282,7 @@ width: 600px;
     font-size: 18px;
     border-radius: 20px;
     color:rgb(231, 231, 239);
-    background-color: rgb(41, 114, 10);
+    background-color: rgb(15, 73, 219);
 }
 .main{
     height: 800px;

@@ -1,4 +1,5 @@
 import React from "react";
+
 import {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
@@ -84,8 +85,9 @@ function Home(props){
     });
 
     return isLoaded ? (
+      
       <div className="borderStyle">
-        
+       
       <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -96,6 +98,7 @@ function Home(props){
           { /* Child components, such as markers, info windows, etc. */ }
           <></>
         </GoogleMap>
+       
       </div>
          
       ) : <></>;

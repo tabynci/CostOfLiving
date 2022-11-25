@@ -1,11 +1,11 @@
 import React from "react";
- const Pagination =({pricesPerPage, totalPosts, paginate}) =>{
-    // console.log(pricesPerPage, totalPosts)
+ const PaginationCompare =({categoriesPerPage, totalPosts, paginate}) =>{
+    console.log(categoriesPerPage, totalPosts)
 const pageNumbers=[];
-    for (let i=1; i<=Math.ceil(totalPosts/pricesPerPage); i++){
+    for (let i=1; i<=Math.ceil(totalPosts/categoriesPerPage); i++){
         pageNumbers.push(i);
     }
-    // console.log(pageNumbers)
+    console.log(pageNumbers)
     
     return(
         <nav>
@@ -24,4 +24,4 @@ const pageNumbers=[];
         </nav>
     )
  }
- export default Pagination;
+ export default PaginationCompare;

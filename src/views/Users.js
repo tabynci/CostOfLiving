@@ -90,7 +90,7 @@ useEffect(()=>{
                         result.map((user)=>{
                        
                         return (<tr><td >{user.id}</td>
-                             <td >{user.username}</td>
+                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                             <td>{user.age}</td>
                            <td> <button onClick={deletUser} id={user.id} className="btn btn-lg btn-outline-danger ml-4">Delete</button></td>

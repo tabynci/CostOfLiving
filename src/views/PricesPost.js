@@ -3,7 +3,7 @@ import _ from 'lodash'
  const PricesPost =({prices,loading })=>{
 
     var catgroup=_.groupBy(prices, 'category_name');
-    console.log(catgroup)
+    // console.log(catgroup)
 if(loading){
 return <h2>loading..</h2>
 }
@@ -13,7 +13,7 @@ Object.keys(catgroup).map((catgory) => (
     // console.log(catgory);
 
     <ul className="list-group mb-4">
-<span>{catgory}</span>
+    <span>{catgory}</span>
     {prices.map(price=>{
         if(price.category_name===catgory)
         return(<li key={price.id} className="list-group-item">

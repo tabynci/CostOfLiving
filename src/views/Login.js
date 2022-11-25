@@ -8,46 +8,75 @@ function Login(props){
    const [message, setMessage] = useState('')
    const [username, setUsername] = useState('')
    const [password, setPassword] = useState('')
+    const [errorUsername, setErrorUsername]=useState('');
+    const [errorPassword, setErrorPassword]=useState('');
     const [error, setError]=useState('');
     const [loggedIn,setLoggedIn] =useState('false')
     const [admin,setAdmin] =useState('n')
-
+    const [pwdError, setPwdError] = useState(false);
+    const [usernameError, setUsernameError] = useState(false);
     
    function handleUsernameInput(e){
       e.preventDefault()
       setUsername(e.target.value)
-     }
- 
-  function handlePasswordInput(e){
+      }
+    function handlePasswordInput(e){
       e.preventDefault()
       setPassword(e.target.value)
   }
+
+  const ValidUsername =new RegExp('[a-zA-Z0-9\s]+$');
+
+  const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
+
+   
+
  async function handleSubmit(e){
   e.preventDefault()
 
-  if(username  && password ){
-    
-  try{
+  if(username!==""  && password!=="" ){
+   
+  if(!(ValidUsername.test(username))){
+   
+      setUsernameError(true);
+   }else if (!(validPassword.test(password))) {
+      setPwdError(true);
+   }else{
+    try{
 
-    var data = await axios.post("http://localhost:3005/Users/login",{username:username, password:password })
-    if(data) {
-       console.log(data);
-        // localStorage.setItem("token",data.data.token)
-        // localStorage.setItem("admin",data.data.admin)
-        sessionStorage.setItem("token",data.data.Usertoken)
-        sessionStorage.setItem("admin",data.data.admin)
-        setLoggedIn((data.data.Usertoken?'true':'false'))
-        setAdmin(data.data.admin)
-        props.token()
-    }
-    } catch(error) {
-      console.log(error)
-    }
-}else{
-  setMessage("enter all fields")
-}
+      var data = await axios.post("http://localhost:3005/Users/login",{username:username, password:password })
+      if(data) {
+      
+        //  console.log(data);
+        
+          sessionStorage.setItem("token",data.data.Usertoken)
+          sessionStorage.setItem("admin",data.data.admin)
+          setLoggedIn((data.data.Usertoken?'true':'false'))
+          setAdmin(data.data.admin)
+          setErrorUsername("")
+          setErrorPassword("")
+          props.token()
+      }
      
-}
+      } 
+      catch(error) {
+        console.log(error)
+      }
+   }
+   
+ 
+  }else if(username==="" && password!==""){
+      
+      setErrorUsername("Please enter username")
+      }else if(username!=="" && password===""){
+      
+        setErrorPassword("Please enter Password")
+          }
+      else{
+          setError("Please enter all fields")
+        }
+            
+      }
  
   // to check only for user login
   if(loggedIn === 'true' && admin.toUpperCase() === 'N'  ){
@@ -70,16 +99,20 @@ function Login(props){
              
              <header>
               <form>
-             <h4 style={{color:'red'}}> {message} </h4>
-             <br/>
-             <label>UserName</label> <br/><br/>
-             <input type="text" value={username} onChange={handleUsernameInput} placeholder='Enter Username' required />
-             <br/><br />
-             <label>Password</label> <br/><br/> 
-             <input type='password' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
-             <br/> <br />
+                <fieldset>
+                <h1>Login Form</h1>
+              <br/>
+             <label required-field>UserName</label><span style={{ color: 'red' }}>*</span> <br/>
+             <input type="text" value={username} onChange={handleUsernameInput} placeholder='Enter Username' required /> <br></br>
+             <h4 style={{color:'red'}}> {errorUsername} </h4>  {usernameError && <p style={{ color: 'red' }}>Your username is invlaid</p>}
+             <label required-field>Password</label><span style={{ color: 'red' }}>*</span><br/>
+             
+             <input type='text' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
+             <br/> <br /> <h4 style={{color:'red'}}> {errorPassword} </h4> {pwdError && <p style={{ color: 'red' }}>Your password is invalid</p>}
              <button className='logBtn' onClick={handleSubmit}>Login</button>
-             <br/> <br />
+             <br/> 
+             <h4 style={{color:'red'}}> {message} </h4>
+             <h4 style={{color:'red'}}> {error} </h4>
              <p>ForgotPassword click <span></span>
              <Link to="/ForgotPassword">ForgotPassword</Link></p>
              <br/>
@@ -87,9 +120,9 @@ function Login(props){
               <h4>Not a Customer 
                <span></span>   <Link to="/Register">Register</Link></h4>
              </div>
+             </fieldset>
               </form>
              </header>
-             
             </div>
           </div>
             

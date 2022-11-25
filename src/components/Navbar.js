@@ -16,7 +16,7 @@ const [admin, setAdmin] =useState('n')
     setAdmin(props.admin)
  }, [props.loggedIn])
  
-   if(loggedIn=='true' && admin.toUpperCase()=='N'){
+   if(sessionStorage.getItem("token") && admin.toUpperCase()=='N'){
    
     return (
         <div className="container-fluid fluid-padding height">
@@ -51,7 +51,7 @@ const [admin, setAdmin] =useState('n')
       </nav>
           </div>
         );
-} else if(loggedIn=='true' && admin.toUpperCase()=='Y'){
+} else if(sessionStorage.getItem("admin") && admin.toUpperCase()=='Y'){
   
    
     return(
@@ -66,6 +66,9 @@ const [admin, setAdmin] =useState('n')
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active text-light item-font" aria-current="page" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active text-light item-font" aria-current="page" to="/Dashboard">Dashboard</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link active text-light item-font" aria-current="page" to="/Logout">Logout</Link>
@@ -96,12 +99,7 @@ const [admin, setAdmin] =useState('n')
               <li className="nav-item">
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/Login">Login</Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
-              
-           
-            </ul>
+              </ul>
               <Search />
           </div>
         </div>

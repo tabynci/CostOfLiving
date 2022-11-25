@@ -8,7 +8,10 @@ import React, { useState} from "react";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { useEffect } from "react";
-import { result } from "lodash";
+import { result, set } from "lodash";
+import { Pagination } from "react-bootstrap";
+import ComparePost from "./ComparePost";
+import PaginationCompare from "./PaginationCompare";
 // import { set } from "lodash";
 // import { propTypes } from "react-bootstrap/esm/Image";
 
@@ -24,26 +27,40 @@ function Compare(props){
     const [city2, setcity2] = useState("⬇️ Select a city 2 ⬇️")
     const [city1Array, setCity1Array] =useState([])
     const [city2Array, setCity2Array] =useState([])
-    props.token();
+    const [loading, setLoading]=useState(false)
+    const [currentPage, setCurrentPage]=useState(1);
+    const [categoriesPerPage, SetCategoriesPerPage]=useState(10);
+    const [prices, setPrices]=useState([])
+    const [cityId1, setCityId1]=useState('')
+    const [cityId2, setCityId2]=useState('')
+    const [UserId, setUserId] =useState('')
 
     //https://softwareengineering.stackexchange.com/questions/433640/in-javascript-how-is-awaiting-the-result-of-an-async-different-than-sync-calls
 
-    function handlechange1(e){
-        e.preventDefault();
-        setHost(e.target.value)
-        getPrices(e.target.value,'Ireland').then((value) => {
-            // console.log(value.data)
+    const getHost = function(cityname) {
+        setHost(cityname)
+        getPrices(cityname,'Ireland').then((value) => {
+            console.log(value.data)
             setCity1Prices(value.data.prices)
         });
+    }
+
+    const getforeign = function(cityname){
+        setforeign(cityname)
+        getPrices(cityname,'India').then((value) => {
+            console.log(value.data)
+            setCity2Prices(value.data.prices)
+        });
+    }
+
+    function handlechange1(e){
+        e.preventDefault();
+        getHost(e.target.value);
     }
     
     function handlechange2(e){
         e.preventDefault();
-        setforeign(e.target.value)
-        getPrices(e.target.value,'India').then((value) => {
-            // console.log(value.data)
-            setCity2Prices(value.data.prices)
-        });
+        getforeign(e.target.value)
     }
 
     const Citydropdown= async function city1Section(){
@@ -114,28 +131,80 @@ function Compare(props){
         }
     }
 
-    function handleCompare(e){
-        e.preventDefault();
-
-        // console.log(city1Prices);
-        // console.log(city2Prices);
-            setCategories(
-            city1Prices.map((price) => {
-                if(price.category_name!=="Salaries And Financing"){
-                    return {
-                        "category_name":price.category_name,
-                        "item_name":price.item_name
-                    }}
-                })
+    const getCategories = function(){
+    setCategories(
+        city1Prices.map((price) => {
+            if(price.category_name!=="Salaries And Financing"){
+                return {
+                    "category_name":price.category_name,
+                    "item_name":price.item_name
+                }}
+            })
         )
     }
+    function handleCompare(e){
+        e.preventDefault();
+        getCategories();
+        // console.log(city1Prices);
+        // console.log(city2Prices);
+        
+    }
+    const handleSave= async function(){
+        try{
+            if(host !== "" && foreign !== ""){
+                var data= await axios.post("http://localhost:3005/Compare/CompareSave",{
+                    token:sessionStorage.getItem("token"),
+                    hostcity:host,
+                    foreigncity:foreign
+                })
+            }
+            // if(data){
+            //     console.log(data)
+            //     // sessionStorage.setItem("token",data.data)
+            //     setCityId1(data.data.cityId1)
+            //     console.log(data.data.cityId1)
+            //     setcity2(data.data.cityId2)
+            //     props.token()
+            // }
+        }catch(error){
+            console.log(error)
+        }
+    }
 
+    const handleLoad= async function(){
+        try{
+            {
+                console.log(sessionStorage.getItem("token"))
+                await axios.post("http://localhost:3005/Compare/compareUser",{
+                    token:sessionStorage.getItem("token")
+                }).then(response => {
+                    console.log('reponse' + response.data)
+                if(response.data[0]) {
+                    getHost(response.data[0].hostcity);
+                    getforeign(response.data[0].foreigncity);
+                    getCategories();
+                }})
+            } 
+        }catch(error){
+            console.log(error)
+        }
+    }
+        useEffect(()=>{
+        },[handleLoad])
 
-   
+// get currenet price
+const indexOfLastPrice =currentPage*categoriesPerPage;
+const indexOfFirstPrice=indexOfLastPrice-categoriesPerPage;
+const currentCategory=categories.slice(indexOfFirstPrice, indexOfLastPrice);
+
+// Change Page
+const paginate =(pageNumber)=> setCurrentPage(pageNumber);
+
+   if(sessionStorage.getItem("token")){
     return(
         <div>
             <div>
-                <p className="compareHeading">Compare two cities Data</p>
+                <p className="compareHeading">Compare Data of two cities</p>
             </div>
     
             <div className="compare">
@@ -157,8 +226,12 @@ function Compare(props){
                     </div>
                 <div className="buttonCompare">
                 <button type="button" onClick={handleCompare} class="btn btn-success">Compare</button>
+                <br></br>
+                <button onClick={handleSave} class="btn btn-success">Save</button>
+                <br></br>
+                <button onClick={handleLoad} class="btn btn-success">Load</button>
                 </div>
-            <div>
+            {/* <div>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -192,8 +265,14 @@ function Compare(props){
                     }
                     </tbody>
                 </Table>
-            </div>
+            </div> */}
+            <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
+            <PaginationCompare categoriesPerPage={categoriesPerPage} totalPosts={categories.length} paginate={paginate}/>
+
+
         </div>
         )
+   }
+   
 }
 export default Compare;

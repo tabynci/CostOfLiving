@@ -13,8 +13,7 @@ function Dashboard(props){
        <div id="App">
       <div id="page-wrap">
        <h3>Welcome to Admin Dashboard</h3>
-     
-       <Users token={props.token}/>
+      <Users token={props.token}/>
       </div>
     </div> 
         
