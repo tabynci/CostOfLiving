@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import SideBar from '../components/Sidebar';
@@ -5,13 +6,12 @@ import Table from 'react-bootstrap/Table';
 import { set } from "lodash";
 import e from "cors";
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
-function Users(props){
+function UserContact(props){
 
 
 const [err, setErr]=useState('not connected');
 
 const [result, setResult]=useState([])
-const [users, setUsers]=useState([])
 const [delStatus, setDelStatus]=useState('')
 
 // const [id, setId]=useState('')
@@ -21,7 +21,7 @@ const getAllUsers = async function(){
     
     try {
         console.log('check')
-        var data = await axios.get("http://localhost:3005/users")
+        var data = await axios.get("http://localhost:3005/Users/allcontact")
         // console.log(data);
         setResult(data.data)
         setDelStatus('');
@@ -35,10 +35,12 @@ const getAllUsers = async function(){
 async function deletUser (e){
     e.preventDefault();
     try{
-        // console.log("http://localhost:3005/users/"+e.target.id)
-        var data =await axios.delete("http://localhost:3005/users/"+e.target.id)
+        console.log("http://localhost:3005/Users/allcontact/"+e.target.id)
+        var data =await axios.delete("http://localhost:3005/Users/allcontact/"+e.target.id)
+        console.log(data)
         if(data.status == '200')
             setDelStatus('true');
+    
     }catch(error){
         console.log(err)
 }
@@ -67,8 +69,6 @@ const viewUser=result.map(user=>{
 
 useEffect(()=>{
     getAllUsers();
-   
-    // viewUser();
 },[delStatus]);
 
 // console.log(getAllUsers());
@@ -78,15 +78,15 @@ useEffect(()=>{
         <div id="App">
         <SideBar />
         <div>
-            <h1 className="user-h">Users</h1>
+            <h1 className="conatct-h">Conatct Users</h1>
         <Table striped bordered hover>
                     <thead>
-                        <tr  className="user-color">
+                        <tr className="user-color">
                             <th className="user-contact">User Id</th>
                             <th className="user-contact">UserName</th>
                             <th className="user-contact">Email</th>
-                            <th className="user-contact">Age</th>
-                            <th className="user-contact">Action</th>
+                            <th className="user-contact">Message</th>
+                           <th className="user-contact">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,7 +96,7 @@ useEffect(()=>{
                         return (<tr className="contact-user"><td >{user.id}</td>
                                  <td>{user.username}</td>
                                 <td>{user.email}</td>
-                            <td>{user.age}</td>
+                            <td>{user.message}</td>
                            <td> <button onClick={deletUser} id={user.id} className="btn btn-lg btn-outline-danger ml-4">Delete</button></td>
                         </tr>);
                         })
@@ -112,4 +112,4 @@ useEffect(()=>{
    
     
 
-export default Users;
+export default UserContact;

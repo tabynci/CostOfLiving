@@ -34,6 +34,7 @@ function ForgotPassword(props){
     <div className="forgotDiv">
         <div className="forgotPassword ">
         <form>
+            <h1>Yet to be implemented</h1>
             <h4>Password Reset</h4>
              <label>Email</label><br/><br/>
              <input type='email' value= {email} onChange={handleEmailInput} placeholder='abcd@gmail.com' required />

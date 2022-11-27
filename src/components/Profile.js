@@ -116,7 +116,7 @@ return (
              <label>Confirm Password</label><br></br>
             <input type="text" value={ConfirmPassword} onChange={handleConfirmPasswordInput}></input><br></br>
             <br></br>
-            <p>{msg}</p>
+            <h4 style={{color:'red'}}> {msg} </h4>
             <button className="profile-button" onClick={handleUpdate}>Update</button>
             </div>
             

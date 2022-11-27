@@ -18,14 +18,16 @@ function Login(props){
     
    function handleUsernameInput(e){
       e.preventDefault()
+      setError('');
       setUsername(e.target.value)
       }
     function handlePasswordInput(e){
       e.preventDefault()
+      setError('');
       setPassword(e.target.value)
   }
 
-  const ValidUsername =new RegExp('[a-zA-Z0-9\s]+$');
+  const ValidUsername =new RegExp('[a-zA-Z][*0-9]');
 
   const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
 
@@ -33,7 +35,11 @@ function Login(props){
 
  async function handleSubmit(e){
   e.preventDefault()
-
+setError('')
+setErrorUsername('')
+setErrorPassword('')
+setUsernameError('')
+setPwdError('')
   if(username!==""  && password!=="" ){
    
   if(!(ValidUsername.test(username))){
@@ -100,15 +106,15 @@ function Login(props){
              <header>
               <form>
                 <fieldset>
-                <h1>Login Form</h1>
+                <h1 className='log-padding'>Login Form</h1>
               <br/>
              <label required-field>UserName</label><span style={{ color: 'red' }}>*</span> <br/>
              <input type="text" value={username} onChange={handleUsernameInput} placeholder='Enter Username' required /> <br></br>
-             <h4 style={{color:'red'}}> {errorUsername} </h4>  {usernameError && <p style={{ color: 'red' }}>Your username is invlaid</p>}
+             <h4 style={{color:'red'}}> {errorUsername} </h4>  {usernameError && <h4 style={{ color: 'red' }}>Your username is aplhanumeric and should always starts with alphabets and numbers</h4>}
              <label required-field>Password</label><span style={{ color: 'red' }}>*</span><br/>
              
-             <input type='text' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
-             <br/> <br /> <h4 style={{color:'red'}}> {errorPassword} </h4> {pwdError && <p style={{ color: 'red' }}>Your password is invalid</p>}
+             <input type='password' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
+             <br/> <br /> <h4 style={{color:'red'}}> {errorPassword} </h4> {pwdError && <h4 style={{ color: 'red' }}>Your password is invalid</h4>}
              <button className='logBtn' onClick={handleSubmit}>Login</button>
              <br/> 
              <h4 style={{color:'red'}}> {message} </h4>

@@ -32,7 +32,6 @@ function Footer(props){
         <div className="col">
           <h2>Cost Of living and Expenses</h2>
           <h3 className="list-unstyled">
-            <li>+353(01)-000-000</li>
             <li>LEIXLIP, IRELAND</li>
             <li>123 Streeet South North</li>
           </h3>

@@ -13,14 +13,19 @@ Object.keys(catgroup).map((catgory) => (
     // console.log(catgory);
 
     <ul className="list-group mb-4">
-    <span>{catgory}</span>
+    <span className="cat">{catgory}</span>
     {prices.map(price=>{
         if(price.category_name===catgory)
-        return(<li key={price.id} className="list-group-item">
-        <span> Item Name:</span><p id="light"> {price.item_name}</p>
-        <span> Max: </span><p className="light">{price.max}</p> 
-        <span>Min:<p className="light"> {price.min}</p></span> 
-        </li>)
+        return(<div className="cat-div">
+
+      
+        <li key={price.id} className="list-group-item">
+        <p className="Item"> Item Name: <span className="item-name">{price.item_name}</span></p>
+        <p  className="Item"> Max:   <span className="item-name">{price.max}</span></p>
+        <p  className="Item"> Min:    <span className="item-name">{price.min}</span></p>
+        </li>
+        </div>
+        )
     })}
 </ul>
 

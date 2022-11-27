@@ -18,6 +18,9 @@ export default props => {
          <Link className="menu-item" to="/Users">
         Users
       </Link>
+      <Link className="menu-item" to="/UserConatct">
+       Contacts
+      </Link>
       </Menu>
   </div>
    

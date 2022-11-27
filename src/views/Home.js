@@ -34,8 +34,8 @@ function Home(props){
     }
 
     const containerStyle = {
-        width: '1690px',
-        height: '700px'
+        width: '1635px',
+        height: '640px'
       };
 
     const [center, setCenter]=useState({
@@ -85,7 +85,8 @@ function Home(props){
     });
 
     return isLoaded ? (
-      
+      <div> <h1 className="home-h">Cost of Living and Expenses</h1>
+     
       <div className="borderStyle">
        
       <GoogleMap
@@ -100,7 +101,7 @@ function Home(props){
         </GoogleMap>
        
       </div>
-         
+      </div>
       ) : <></>;
       
 }

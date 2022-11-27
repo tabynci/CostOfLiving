@@ -29,7 +29,7 @@ function Compare(props){
     const [city2Array, setCity2Array] =useState([])
     const [loading, setLoading]=useState(false)
     const [currentPage, setCurrentPage]=useState(1);
-    const [categoriesPerPage, SetCategoriesPerPage]=useState(10);
+    const [categoriesPerPage, SetCategoriesPerPage]=useState(7);
     const [prices, setPrices]=useState([])
     const [cityId1, setCityId1]=useState('')
     const [cityId2, setCityId2]=useState('')
@@ -202,20 +202,20 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
 
    if(sessionStorage.getItem("token")){
     return(
-        <div>
+        <div className="compare-div">
             <div>
                 <p className="compareHeading">Compare Data of two cities</p>
             </div>
     
             <div className="compare">
-            <div><p className="text">City Name:   </p></div>
-            <div>
+            <div><p className="text">Host</p></div>
+                    <div>
                     <select className="dropdown" onChange={handlechange1}>
                    <option value="⬇️ Select a city 1 ⬇️"> -- Select a city 1-- </option>
                  {city1Array.map((city1)=><option value={city1.value}>{city1.label}</option>)}
                     </select>
                     </div>
-                    <div><p className="text">Another city Name:  </p></div>
+                    <div><p className="text">Foreign</p></div>
                     <div>
                     <select className="dropdown" onChange={handlechange2}>
               
@@ -223,49 +223,15 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
                 {city2Array.map((city2)=><option value={city2.value}>{city2.label}</option>)}
                     </select>
                     </div>
-                    </div>
+                   
                 <div className="buttonCompare">
-                <button type="button" onClick={handleCompare} class="btn btn-success">Compare</button>
-                <br></br>
-                <button onClick={handleSave} class="btn btn-success">Save</button>
-                <br></br>
-                <button onClick={handleLoad} class="btn btn-success">Load</button>
+                <button type="button" id="Compare" onClick={handleCompare} class="btn btn-success pull-left">Compare</button>
+                <button type="button" id="save" onClick={handleSave} class="btn btn-success pull-center">Save</button>
+                <button type="button" id="load" onClick={handleLoad} class="btn btn-success pull-right">Load</button>
                 </div>
-            {/* <div>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                             <th>Categories</th>
-                            <th>Item</th>
-                            <th>{host}</th>
-                            <th>{foreign}</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                      
-                    {
-                        categories.map((category)=>{
-                            if(category){
-                            const price1 = city1Prices.filter((pr)=> { 
-                                    return pr.category_name==category.category_name && pr.item_name==category.item_name})[0]
-                            const city1P =price1? price1.usd: undefined;
-
-                            const price2 = city2Prices.filter((pr)=> { 
-                                return pr.category_name==category.category_name && pr.item_name==category.item_name})[0]
-                            const city2P =price2? price2.usd: undefined
-                            
-                        return (<tr> <td >{category.category_name}</td>
-                                <td>{category.item_name}</td>
-                            <td>Minimum: <span>&#36;</span>{city1P?city1P.min:0}<br></br>Maximun: <span>&#36;</span>{city1P?city1P.max:0}</td>
-                            <td>Minimum: <span>&#36;</span>{city2P?city2P.min:0}<br></br>Maximun: <span>&#36;</span>{city2P?city2P.max:0}</td>
-                        </tr>);
-                        }})
-                    }
-                    </tbody>
-                </Table>
-            </div> */}
+                </div>
+                
+           
             <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
             <PaginationCompare categoriesPerPage={categoriesPerPage} totalPosts={categories.length} paginate={paginate}/>
 

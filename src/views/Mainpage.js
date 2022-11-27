@@ -9,7 +9,6 @@ import React from 'react';
 import m from '../images/m.jpg';
 import u from '../images/u.jpeg';
 import Pagination from './Pagination';
-
 import PricesPost from './PricesPost';
 
 function Mainpage(props){
@@ -28,16 +27,20 @@ function Mainpage(props){
         const [loading, setLoading]=useState(false)
         const [currentPage, setCurrentPage]=useState(1);
         const [pricesPerPage, SetPricesPerPage]=useState(3);
+        
+      
 
       function handleSearchCity(e){ //when user enters value this function is called out
           e.preventDefault()
+          setError('');
           setCityName(e.target.value)
       }
       function handleSearchCountry(e){ //when user enters value this function is called out
         e.preventDefault()
+        setError('');
         setCountry(e.target.value)
        }
-    
+  
     const getCitiesPrices= async function() {
        
        if(city_name && country_name){
@@ -68,19 +71,24 @@ function Mainpage(props){
         getCitiesPrices();
         },[prices]);
 
-        function handleSubmit(e){
+        function handleSearch(e){
         e.preventDefault();
         console.log(city_name + country_name);
             if(city_name && country_name)
             {
+        setError('');
         getCitiesPrices();
         setCityName('');
         setCountry('');
-             }     
+        
+             }   
+             else if(city_name=="" && country_name==""){
+                setError('please enter all the fileds');
+             }  
         setCategoryGroup(_.groupBy(prices, 'category_name'))
  };
     
-   
+
 // get currenet price
     const indexOfLastPrice =currentPage*pricesPerPage;
     const indexOfFirstPrice=indexOfLastPrice-pricesPerPage;
@@ -95,7 +103,7 @@ function Mainpage(props){
         return(
             
             <div className='main'>
-                <h1>Cost Of Living and Expenses</h1>
+                <h1 className='MainPage-H'>Cost Of Living and Expenses</h1>
                 <p className='Mainpage-input'> Cost of Living and Expenses is an international database.Information on seconds on :buying an apartment, Mortgage Costs, Transportaion, Salaries and Financing, Restaurants, Childcare</p><br></br>
                 
                 
@@ -109,11 +117,11 @@ function Mainpage(props){
                     <input type="text" className='Mainpage-input' value={city_name} onChange={handleSearchCity} placeholder="Enter City name"></input><br/>
                     <label className='Mainpage-input-red'>Country Name</label><br/>
                     <input type="text"  className='Mainpage-input' value={country_name} onChange={handleSearchCountry} placeholder=" Enter Country Name"></input><br/><br/>
-                    <button className='mainpage-input-button' name='search' onClick={handleSubmit}>Search</button><br></br>
+                    <button className='mainpage-input-button' name='search' onClick={handleSearch}>Search</button><br></br>
                     </div>
-                    
+                    <h4 style={{color:'red'}}> {error} </h4>
                 </div>
-               
+              
                     <div className='category'>                
                     {/* {itemprice} */}
                     <PricesPost prices ={currentPrice} loading={loading}/>

@@ -16,6 +16,7 @@ import Dashboard from './components/Dashboard';
 import Users from './views/Users';
 import Compare from './views/Compare';
 import ForgotPassword from './views/ForgotPassword';
+import UserContact from './views/UserContact';
 
 
 function App() {
@@ -52,6 +53,7 @@ return (
             <Route path ="/Compare" element={<Compare token={token} />} />
             <Route path ="/Dashboard" element={<Dashboard token={token} location={location}/>} />
             <Route path ="/Users" element={<Users token={token}/>} />
+            <Route path ="/UserConatct" element={<UserContact token={token} />}/>
             <Route path ="/ForgotPassword" element={<ForgotPassword/>} />
          </Routes>
        <Footer loggedIn={loggedIn} admin={admin} />

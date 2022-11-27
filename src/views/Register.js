@@ -20,18 +20,23 @@ function Register(props){
 
     function handleUsernameInput(e){
         e.preventDefault()
+        setError('')
         setUsername(e.target.value)
     }
     function handleEmailInput(e){
+      
         e.preventDefault()
+        setError('')
         setEmail(e.target.value)
     }
     function handleAgeInput(e){
         e.preventDefault()
+        setError('')
         setAge(e.target.value)
     }
     function handlePasswordInput(e){
         e.preventDefault()
+        setError('')
         setPassword(e.target.value)
     }
    const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
@@ -44,7 +49,7 @@ function Register(props){
         e.preventDefault()
 
         if(username!=="" && email!=="" && age!=="" ){
-            
+            setError('');
             if (!(validEmail.test(email))) {
                 console.log(!(validEmail.test(email)))
                 setEmailErr(true);
@@ -103,7 +108,7 @@ function Register(props){
                  
                   <header>
                     <form>
-                        <h2 className='register-header'>Register Form</h2>
+                        <h1 className='register-header'>Register Form</h1>
                     <br/>
                     <div>
                     <label> Username<br></br></label> <span style={{ color: 'red' }}>*</span> <br></br>
@@ -122,7 +127,7 @@ function Register(props){
                 </div>
                  <div>
                  <label> Password<br></br> </label><span style={{ color: 'red' }}>*</span> <br></br>
-                 <input type='text' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
+                 <input type='password' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
                  <br/><br/>
                  </div>
                  <div>
