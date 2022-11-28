@@ -1,11 +1,11 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import axios from 'axios';
 import {Navigate, Link} from 'react-router-dom'
 // import verifyToken, { auth } from '../auth/auth'
 
 function Login(props){
     
-   const [message, setMessage] = useState('')
+   const [message] = useState('')
    const [username, setUsername] = useState('')
    const [password, setPassword] = useState('')
     const [errorUsername, setErrorUsername]=useState('');
@@ -50,7 +50,7 @@ setPwdError('')
    }else{
     try{
 
-      var data = await axios.post("http://localhost:3005/Users/login",{username:username, password:password })
+      var data = await axios.post("${REACT_APP_API_ENDPOINT}/Users/login",{username:username, password:password })
       if(data) {
       
         //  console.log(data);

@@ -70,8 +70,6 @@
 
   
 .logoIMG{
-    
-  
     padding-left: 100px;
     
 }
@@ -91,9 +89,6 @@
 .move-text{
     margin-left: 200px;
 }
-
-
-
 
 .login{
     background-color: rgb(236, 231, 224);
@@ -428,3 +423,9 @@ font-size: 18px;
     .user-color{
         background-color: black;
     }
+    #page{
+        margin-left:20px ;
+        
+    }
+
+   

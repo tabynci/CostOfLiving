@@ -7,7 +7,7 @@ import {Navigate} from 'react-router-dom'
 import Cities from './Cities';
 import React from 'react';
 import m from '../images/m.jpg';
-import u from '../images/u.jpeg';
+import u from '../images/u.jpg';
 import Pagination from './Pagination';
 import PricesPost from './PricesPost';
 

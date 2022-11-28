@@ -33,3 +33,7 @@ background-color: rgb(160, 168, 193);
     }
     .row.content {height:auto;} 
   }
+
+  .page{
+    padding-left: 20px;
+  }
