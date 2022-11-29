@@ -3,17 +3,12 @@
 // https://dev.to/antdp425/populate-dropdown-options-in-react-1nk0
 
 import React, { useState} from "react";
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
-import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { useEffect } from "react";
-import { result, set } from "lodash";
-import { Pagination } from "react-bootstrap";
 import ComparePost from "./ComparePost";
 import PaginationCompare from "./PaginationCompare";
-// import { set } from "lodash";
-// import { propTypes } from "react-bootstrap/esm/Image";
+import APi from './File';
+
 
 function Compare(props){
     const [host, setHost] = useState('')
@@ -21,26 +16,19 @@ function Compare(props){
     const [city1Prices, setCity1Prices]=useState([])
     const [city2Prices, setCity2Prices]=useState([])
     const [categories, setCategories]=useState([])
-    const [country_name, setCountry_name] =useState([])
-    const [city_name, setCity_name]=useState([])
-    const [city1, setcity1] = useState("⬇️ Select a city 1 ⬇️")
-    const [city2, setcity2] = useState("⬇️ Select a city 2 ⬇️")
     const [city1Array, setCity1Array] =useState([])
     const [city2Array, setCity2Array] =useState([])
-    const [loading, setLoading]=useState(false)
+    const [loading]=useState(false)
     const [currentPage, setCurrentPage]=useState(1);
-    const [categoriesPerPage, SetCategoriesPerPage]=useState(7);
-    const [prices, setPrices]=useState([])
-    const [cityId1, setCityId1]=useState('')
-    const [cityId2, setCityId2]=useState('')
-    const [UserId, setUserId] =useState('')
+    const [categoriesPerPage]=useState(6);
+    const [Status, setStatus]=useState('')
 
     //https://softwareengineering.stackexchange.com/questions/433640/in-javascript-how-is-awaiting-the-result-of-an-async-different-than-sync-calls
 
     const getHost = function(cityname) {
         setHost(cityname)
         getPrices(cityname,'Ireland').then((value) => {
-            console.log(value.data)
+            // console.log(value.data)
             setCity1Prices(value.data.prices)
         });
     }
@@ -48,7 +36,7 @@ function Compare(props){
     const getforeign = function(cityname){
         setforeign(cityname)
         getPrices(cityname,'India').then((value) => {
-            console.log(value.data)
+            // console.log(value.data)
             setCity2Prices(value.data.prices)
         });
     }
@@ -63,9 +51,10 @@ function Compare(props){
         getforeign(e.target.value)
     }
 
+     //used for dropdown 1
     const Citydropdown= async function city1Section(){
         try{
-            var data = await axios.get("http://localhost:3005/CompareCities")
+            var data = await axios.get( APi.host+"/CompareCities")
             // console.log(data)
             setCity1Array(data.data.map((x)=>
                 {
@@ -82,15 +71,15 @@ function Compare(props){
 
     useEffect(()=>{
         // console.log("Citydropdown")
+        AnotherCitydropdown();
         Citydropdown();
         // console.log(city1)
-    },[""])
+    },[])
 
-
+ //used for dropdown 2
     const AnotherCitydropdown =async function city2Sction(){
         try{
-            var data= await axios.get("http://localhost:3005/CompareAnotherCity")
-
+            var data= await axios.get(APi.host+"/CompareAnotherCity")
             // console.log(data)
             setCity2Array(data.data.map(y=>{
                 return {
@@ -101,17 +90,6 @@ function Compare(props){
             console.log(error)
         }
     }
-
-
-    
-    useEffect(()=>{
-        // console.log("AnotherCitydropdown")
-        AnotherCitydropdown();
-        // console.log(city2)
-    },[""])
-
-
-
 
     const getPrices =  async function(city_name,country_name){
         try{
@@ -141,31 +119,26 @@ function Compare(props){
                 }}
             })
         )
+        setStatus('');
     }
     function handleCompare(e){
         e.preventDefault();
-        getCategories();
+        setStatus('true');
+       
         // console.log(city1Prices);
         // console.log(city2Prices);
         
     }
     const handleSave= async function(){
         try{
+            console.log(host, foreign)
             if(host !== "" && foreign !== ""){
-                var data= await axios.post("http://localhost:3005/Compare/CompareSave",{
+                await axios.post(APi.host+"/Compare/CompareSave",{
                     token:sessionStorage.getItem("token"),
                     hostcity:host,
                     foreigncity:foreign
                 })
             }
-            // if(data){
-            //     console.log(data)
-            //     // sessionStorage.setItem("token",data.data)
-            //     setCityId1(data.data.cityId1)
-            //     console.log(data.data.cityId1)
-            //     setcity2(data.data.cityId2)
-            //     props.token()
-            // }
         }catch(error){
             console.log(error)
         }
@@ -174,15 +147,15 @@ function Compare(props){
     const handleLoad= async function(){
         try{
             {
-                console.log(sessionStorage.getItem("token"))
-                await axios.post("http://localhost:3005/Compare/compareUser",{
+                // console.log(sessionStorage.getItem("token"))
+                await axios.post(APi.host+"/Compare/compareUser",{
                     token:sessionStorage.getItem("token")
                 }).then(response => {
-                    console.log('reponse' + response.data)
+                    // console.log('reponse' + response.data)
                 if(response.data[0]) {
                     getHost(response.data[0].hostcity);
                     getforeign(response.data[0].foreigncity);
-                    getCategories();
+                    setStatus('true');
                 }})
             } 
         }catch(error){
@@ -190,7 +163,8 @@ function Compare(props){
         }
     }
         useEffect(()=>{
-        },[handleLoad])
+            getCategories();
+        },[Status])
 
 // get currenet price
 const indexOfLastPrice =currentPage*categoriesPerPage;
@@ -235,7 +209,10 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
             <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
             <PaginationCompare categoriesPerPage={categoriesPerPage} totalPosts={categories.length} paginate={paginate}/>
 
-
+            <div className="note">
+                <h4 >Note</h4>
+                <p style={{color:'red'}} className="item-n" >* <span className="item-name">0 means, we have no value to compare</span></p> 
+            </div>
         </div>
         )
    }

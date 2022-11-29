@@ -79,7 +79,7 @@
 }
 .borderStyle {
     border: 3px solid rgb(1, 2, 15) !important;
-    width: 164em;
+    /* width: 164em; */
     margin-right: 50px;
     margin-left: 50px;
    margin-top: 20px;
@@ -428,4 +428,10 @@ font-size: 18px;
         
     }
 
-   
+    .note{
+        margin: 3em;
+        }
+
+        .item-n{
+            font-size: 24px;
+        }

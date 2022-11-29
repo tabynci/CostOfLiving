@@ -4,6 +4,7 @@ import SideBar from '../components/Sidebar';
 import Table from 'react-bootstrap/Table';
 import { set } from "lodash";
 import e from "cors";
+import APi from './File';
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
 function Users(props){
 
@@ -20,8 +21,8 @@ props.token();
 const getAllUsers = async function(){
     
     try {
-        console.log('check')
-        var data = await axios.get("http://localhost:3005/users")
+        // console.log('check')
+        var data = await axios.get(APi.host+"/users")
         // console.log(data);
         setResult(data.data)
         setDelStatus('');
@@ -36,7 +37,7 @@ async function deletUser (e){
     e.preventDefault();
     try{
         // console.log("http://localhost:3005/users/"+e.target.id)
-        var data =await axios.delete("http://localhost:3005/users/"+e.target.id)
+        var data =await axios.delete(APi.host+"/users/"+e.target.id)
         if(data.status == '200')
             setDelStatus('true');
     }catch(error){
@@ -46,10 +47,6 @@ async function deletUser (e){
 }
 
 
-// const deletePost=(id)=>{
-//     data.delete(`${id}`);
-//     setUsers()
-// }
 
 const viewUser=result.map(user=>{
     

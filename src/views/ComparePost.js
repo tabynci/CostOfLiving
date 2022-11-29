@@ -1,6 +1,6 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
-import { useState} from "react";
+// import { useState} from "react";
 const ComparePost =({categories,loading,city1Prices, city2Prices, host, foreign })=>{
    
     if(loading){
@@ -19,17 +19,15 @@ const ComparePost =({categories,loading,city1Prices, city2Prices, host, foreign 
          </tr>
         </thead>
         <tbody>
-
-          
         {
             categories.map((category)=>{
                 if(category){
                 const price1 = city1Prices.filter((pr)=> { 
-                        return pr.category_name==category.category_name && pr.item_name==category.item_name})[0]
+                        return pr.category_name===category.category_name && pr.item_name===category.item_name})[0]
                 const city1P =price1? price1.usd: undefined;
 
                 const price2 = city2Prices.filter((pr)=> { 
-                    return pr.category_name==category.category_name && pr.item_name==category.item_name})[0]
+                    return pr.category_name===category.category_name && pr.item_name===category.item_name})[0]
                 const city2P =price2? price2.usd: undefined
                 
             return (<tr className="cat-Design"> <td>{category.category_name}</td>

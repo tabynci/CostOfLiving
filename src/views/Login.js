@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios';
 import {Navigate, Link} from 'react-router-dom'
+import APi from './File';
 // import verifyToken, { auth } from '../auth/auth'
 
 function Login(props){
@@ -15,7 +16,7 @@ function Login(props){
     const [admin,setAdmin] =useState('n')
     const [pwdError, setPwdError] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
-    
+   
    function handleUsernameInput(e){
       e.preventDefault()
       setError('');
@@ -50,7 +51,7 @@ setPwdError('')
    }else{
     try{
 
-      var data = await axios.post("${REACT_APP_API_ENDPOINT}/Users/login",{username:username, password:password })
+      var data = await axios.post(APi.host +"/Users/login",{username:username, password:password })
       if(data) {
       
         //  console.log(data);
@@ -119,8 +120,7 @@ setPwdError('')
              <br/> 
              <h4 style={{color:'red'}}> {message} </h4>
              <h4 style={{color:'red'}}> {error} </h4>
-             <p>ForgotPassword click <span></span>
-             <Link to="/ForgotPassword">ForgotPassword</Link></p>
+             
              <br/>
              <div>
               <h4>Not a Customer 

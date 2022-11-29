@@ -14,7 +14,7 @@ function Home(props){
     // eslint-disable-next-line
     const [map, setMap] = React.useState(null)
 
-    const [currentPage, setCurrentPage] = useState(1);
+    // const [currentPage, setCurrentPage] = useState(1);
 
 
     props.token();

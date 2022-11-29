@@ -5,7 +5,7 @@ import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import {Link} from 'react-router-dom'
 
-export default props => {
+function SideBar(props){
   return (
     <div> 
         <Menu className='sidebar'>
@@ -26,3 +26,4 @@ export default props => {
    
   );
 };
+export default SideBar;

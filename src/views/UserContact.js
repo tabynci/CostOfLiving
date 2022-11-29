@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import SideBar from '../components/Sidebar';
 import Table from 'react-bootstrap/Table';
-import { set } from "lodash";
-import e from "cors";
+import APi from './File';
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
 function UserContact(props){
 
 
-const [err, setErr]=useState('not connected');
+const [err]=useState('not connected');
 
 const [result, setResult]=useState([])
 const [delStatus, setDelStatus]=useState('')
@@ -21,7 +20,7 @@ const getAllUsers = async function(){
     
     try {
         console.log('check')
-        var data = await axios.get("http://localhost:3005/Users/allcontact")
+        var data = await axios.get(APi.host+"/Users/allcontact")
         // console.log(data);
         setResult(data.data)
         setDelStatus('');
@@ -35,10 +34,10 @@ const getAllUsers = async function(){
 async function deletUser (e){
     e.preventDefault();
     try{
-        console.log("http://localhost:3005/Users/allcontact/"+e.target.id)
-        var data =await axios.delete("http://localhost:3005/Users/allcontact/"+e.target.id)
+        // console.log("${CostOfLivingAndExpenses}/Users/allcontact/"+e.target.id)
+        var data =await axios.delete(APi.host+"/Users/allcontact/"+e.target.id)
         console.log(data)
-        if(data.status == '200')
+        if(data.status === "200")
             setDelStatus('true');
     
     }catch(error){
@@ -47,25 +46,6 @@ async function deletUser (e){
 
 }
 
-
-// const deletePost=(id)=>{
-//     data.delete(`${id}`);
-//     setUsers()
-// }
-
-const viewUser=result.map(user=>{
-    
-    return <div className="user-div">
-        <h2>ID:{user.id}</h2>
-        <h4>Username:{user.username}</h4>
-        <h4>Email:{user.email}</h4>
-        <h4>Age:{user.age}</h4>
-        <br/>
-        <ul>
-        </ul>
-     
-         </div>
-});
 
 useEffect(()=>{
     getAllUsers();

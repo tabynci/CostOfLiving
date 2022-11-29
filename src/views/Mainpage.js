@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import _ from 'lodash'
 import {Navigate} from 'react-router-dom'
-import Cities from './Cities';
+// import Cities from './Cities';
 import React from 'react';
 import m from '../images/m.jpg';
 import u from '../images/u.jpg';
@@ -18,15 +18,15 @@ function Mainpage(props){
       const [country_name, setCountry] = useState('')
     //   const [country_id, setCountryID] = useState('')
       const [prices, setPrices]=useState([])
-      const [item_name, setItemName] =useState('')
-        const [max, setMax] =useState('')
-        const [min, setMin]=useState('')
-        const [category_group, setCategoryGroup]=useState({})
-        const [category_name, setCategoryName] =useState('')
+    //   const [item_name, setItemName] =useState('')
+        // const [max, setMax] =useState('')
+        // const [min, setMin]=useState('')
+        const [setCategoryGroup]=useState({})
+        // const [category_name, setCategoryName] =useState('')
         const [error, setError]=useState('');
         const [loading, setLoading]=useState(false)
         const [currentPage, setCurrentPage]=useState(1);
-        const [pricesPerPage, SetPricesPerPage]=useState(3);
+        const [pricesPerPage]=useState(3);
         
       
 
@@ -51,7 +51,7 @@ function Mainpage(props){
             },
             params:{city_name:city_name, country_name:country_name}
         })
-       if(data.status==200){
+       if(data.status===200){
         setLoading(true);
         setPrices(data.data.prices)
         
@@ -64,9 +64,8 @@ function Mainpage(props){
             console.log(error)
         }
        }
-      
-        
         }
+
          useEffect(()=>{
         getCitiesPrices();
         },[prices]);
@@ -82,7 +81,7 @@ function Mainpage(props){
         setCountry('');
         
              }   
-             else if(city_name=="" && country_name==""){
+             else if(city_name==="" && country_name===""){
                 setError('please enter all the fileds');
              }  
         setCategoryGroup(_.groupBy(prices, 'category_name'))
@@ -108,10 +107,10 @@ function Mainpage(props){
                 
                 
             <div className='image-main'>
-               <img src={m} width="500px"></img>
+               <img alt="noimage" src={m} width="500px"></img>
                 </div>
                 <div className='mainpage'>
-                    <div className='Image-opacity'><img src={u} style={{width:"100em"}}></img></div>
+                    <div className='Image-opacity'><img alt="noimage" src={u} style={{width:"100em"}}></img></div>
                     <div className='move-text'>
                     <label className='Mainpage-input-red'> City Name</label><br/>
                     <input type="text" className='Mainpage-input' value={city_name} onChange={handleSearchCity} placeholder="Enter City name"></input><br/>

@@ -1,14 +1,14 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 function Cities(props){
-    const [city_name, setCityName]=useState('')
-    const [country_name, setCountry]=useState('')
-    const [lat, setLat]=useState('')
-    const [lng, setlng]=useState('')
-    const [cities, setCities]=useState([])
-    const [city, setCity]=('')
-    const [city_id, setCityId]=useState('')
-    const filtered ="";
+    const [setCityName]=useState('')
+    const [setCountry]=useState('')
+    const [setLat]=useState('')
+    const [setlng]=useState('')
+    const [setCities]=useState([])
+    // const [city, setCity]=('')
+    const [setCityId]=useState('')
+    // const filtered ="";
 
     const getCities= async function() {
        
@@ -36,12 +36,12 @@ function Cities(props){
             console.log(e)
         }
 
-        const filtered = cities.filter(city => {
-            // console.log(city)
-            if(city.country_name === 'Ireland' && city.city_name==='Dublin')
-                return city 
-          });
-          console.log(filtered);
+        // const filtered = cities.filter(city => {
+        //     // console.log(city)
+        //     if(city.country_name === 'Ireland' && city.city_name==='Dublin')
+        //         return city 
+        //   });
+        //   console.log(filtered);
         }
          useEffect(()=>{
         getCities();

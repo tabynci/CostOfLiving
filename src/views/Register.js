@@ -1,7 +1,8 @@
 
 import {useState} from 'react'
-import { Navigate, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import axios from 'axios';
+import APi from './File';
 
 function Register(props){
     const [username, setUsername] = useState('')
@@ -43,7 +44,7 @@ function Register(props){
 
     const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
 
-    const ValidUsername =new RegExp('[a-zA-Z0-9\s]+$');
+    const ValidUsername =new RegExp('[a-zA-Z][*0-9]');
 
    async function handleSubmit(e){
         e.preventDefault()
@@ -60,8 +61,8 @@ function Register(props){
                 setPwdError(true);
              }else{
                 try{
-                    console.log(data);
-                    var data = await axios.post("http://localhost:3005/Users/register", {
+                    // console.log("value" + APi.host);
+                     await axios.post(APi.host + "/Users/register", {
                     username: username,
                     email:email,
                     age:age,
@@ -74,6 +75,7 @@ function Register(props){
                     setEmail("")
                     setPassword("")
                     setError("")
+                    setEmailErr("")
                     setErrorUsername("")
                     setErrorPassword("")
                     setMessage("Successfully Registered")
@@ -100,9 +102,7 @@ function Register(props){
         }
        
     }
-
-
-            return(
+             return(
                 <div className='registerDiv'>
              <div className='register'>
                  
@@ -136,7 +136,7 @@ function Register(props){
                  </form>
                  </header>
                 <div className='registers'>
-                <h4 style={{color:'red'}}> {message} </h4>
+                <h4 style={{color:'green'}}> {message} </h4>
                 <h4 style={{color:'red'}}> {errorUsername} </h4>
                 <h4 style={{color:'red'}}> {errorPassword} </h4>
                 <h4 style={{color:'red'}}> {errorEmail} </h4>
@@ -144,9 +144,9 @@ function Register(props){
                 <h4 style={{color:'red'}}> {error} </h4>
                 {/* <h4 style={{color:'red'}}> {emailErr} </h4>
                 <h4 style={{color:'red'}}> {pwdError} </h4> */}
-                {emailErr && <p>Your email is invalid</p>}
-                {pwdError && <p>Your password is invalid</p>}
-                {usernameError && <p>Your username is invlaid</p>}
+                {emailErr && <p style={{color:'red'}} >Your email is invalid</p>}
+                {pwdError && <p style={{color:'red'}}>Your password is invalid</p>}
+                {usernameError && <p style={{color:'red'}}>Your username is invlaid</p>}
                     <h3>
                         Already Customer <span></span> <Link to="/login">Sign In</Link> 
                     </h3>

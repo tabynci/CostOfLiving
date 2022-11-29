@@ -2,6 +2,7 @@
 import {useState} from 'react'
 import contact from '../images/contact.jpeg'
 import axios from 'axios';
+import APi from './File';
 function Contact(){
     
     const [msg, setMsg] = useState('')
@@ -13,21 +14,38 @@ function Contact(){
     const [errorMessage, setErrorMessage]=useState('')
     const [usernameError, setUsernameError] = useState(false);
     const [emailErr, setEmailErr] = useState(false);
+    
     const [error, setError] =useState('')
    function handleUsernameInput(e){
+   
       e.preventDefault()
+      setError('')
+      setErrorEmail('')
+      setUsernameError('')
+      setEmailErr('')
+      setErrorMessage('')
       setUsername(e.target.value)
   }
   function handleEmailInput(e){
       e.preventDefault()
+      setError('')
+      setErrorEmail('')
+      setUsernameError('')
+      setEmailErr('')
+      setErrorMessage('')
       setEmail(e.target.value)
   }
   function handleMessageInput(e){
+    setError('')
+     setErrorEmail('')
+    setUsernameError('')
+    setEmailErr('')
+    setErrorMessage('')
     e.preventDefault()
     setMessage(e.target.value)
 }
 // used to validate username
-const ValidUsername =new RegExp('[a-zA-Z0-9\s]+$');
+const ValidUsername =new RegExp('[a-zA-Z][*0-9]');
 
 // used to validate email
 const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
@@ -35,16 +53,17 @@ const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
  async function handleSubmit(e){
       e.preventDefault()
       // all the fileds should be filled out
-     if(!username == "" && !email == "" && !message == ""){
+     if(username !== "" && email !== "" && message !== ""){
       if(!(ValidUsername.test(username))){
         console.log(!(ValidUsername.test(username)))
+    
           setUsernameError(true);
        }else if(!(validEmail.test(email))) {
         setEmailErr(true);
      }else{
         try{
               
-          var data = await axios.post("http://localhost:3005/Users/contact", {
+         await axios.post(APi.host + "/Users/contact", {
           username: username,
           email:email,
           message: message
@@ -52,6 +71,11 @@ const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
             }).then((response)=>{
                 console.log(response)
                 setMsg("we will conatct you soon")
+                setError('')
+                setErrorEmail('')
+                setUsernameError('')
+                setEmailErr('')
+                setErrorMessage('')
                 setUsername("")
                 setEmail("")
                 setMessage("")
@@ -76,7 +100,7 @@ const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
       
           setErrorEmail("Please enter email")
           
-          }else if(username!=="" && email!=="" && message==""){
+          }else if(username!=="" && email!=="" && message===""){
         
           setErrorMessage("Please enter message")
             }

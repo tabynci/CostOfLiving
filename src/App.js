@@ -15,7 +15,6 @@ import { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import Users from './views/Users';
 import Compare from './views/Compare';
-import ForgotPassword from './views/ForgotPassword';
 import UserContact from './views/UserContact';
 
 
@@ -54,8 +53,7 @@ return (
             <Route path ="/Dashboard" element={<Dashboard token={token} location={location}/>} />
             <Route path ="/Users" element={<Users token={token}/>} />
             <Route path ="/UserConatct" element={<UserContact token={token} />}/>
-            <Route path ="/ForgotPassword" element={<ForgotPassword/>} />
-         </Routes>
+           </Routes>
        <Footer loggedIn={loggedIn} admin={admin} />
      </div>
    </Router>

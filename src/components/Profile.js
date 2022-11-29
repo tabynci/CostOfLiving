@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import { update } from "lodash";
 import ProfileImg from '../images/ProfileImg.png'
-
+import APi from '../views/File';
 function Profile(props){
 
     const [username, setUsername] = useState('')
@@ -41,7 +41,7 @@ const viewProfile = async function(){
         console.log(sessionStorage.getItem("id"))
         setId(sessionStorage.getItem("id"))
       
-        var data = await axios.post("http://localhost:3005/users/profile", {token: sessionStorage.getItem("token")})
+        var data = await axios.post(APi.host+"/users/profile", {token: sessionStorage.getItem("token")})
         // console.log(data);
         return{
             result:data.data.result[0]
@@ -72,9 +72,9 @@ useEffect(()=>{
 const UpdateProfile = async function() {
     try {
        console.log( {username:username,email:email,age:age, password:password})
-        var data = await axios.put("http://localhost:3005/users/update",
+        var data = await axios.put(APi.host+"/users/update",
         {token: sessionStorage.getItem("token"), user:{username:username,email:email,age:age, password:password}})
-    if(data.status==200){
+    if(data.status===200){
     setMsg('User details updated succsesfully')
     }
     else{
@@ -116,7 +116,7 @@ return (
              <label>Confirm Password</label><br></br>
             <input type="text" value={ConfirmPassword} onChange={handleConfirmPasswordInput}></input><br></br>
             <br></br>
-            <h4 style={{color:'red'}}> {msg} </h4>
+            <h4 style={{color:'green'}}> {msg} </h4>
             <button className="profile-button" onClick={handleUpdate}>Update</button>
             </div>
             
