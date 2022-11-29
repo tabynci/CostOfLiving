@@ -200,8 +200,8 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
                    
                 <div className="buttonCompare">
                 <button type="button" id="Compare" onClick={handleCompare} class="btn btn-success pull-left">Compare</button>
-                <button type="button" id="save" onClick={handleSave} class="btn btn-success pull-center">Save</button>
-                <button type="button" id="load" onClick={handleLoad} class="btn btn-success pull-right">Load</button>
+                <button type="button" id="save" onClick={handleSave} class="btn btn-success pull-left">Save</button>
+                <button type="button" id="load" onClick={handleLoad} class="btn btn-success pull-left">Load</button>
                 </div>
                 </div>
                 

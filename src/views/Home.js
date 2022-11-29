@@ -34,8 +34,8 @@ function Home(props){
     }
 
     const containerStyle = {
-        width: '1635px',
-        height: '640px'
+        width: '1100px',
+        height: '530px'
       };
 
     const [center, setCenter]=useState({
@@ -85,22 +85,23 @@ function Home(props){
     });
 
     return isLoaded ? (
-      <div> <h1 className="home-h">Cost of Living and Expenses</h1>
+      <div className="main"> 
+        <h1 className="home-h">Cost of Living and Expenses</h1>
      
-      <div className="borderStyle">
-       
-      <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={zoom}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-        >
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
-        </GoogleMap>
-       
-      </div>
+        <div className="borderStyle">
+        
+        <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={zoom}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+          >
+            { /* Child components, such as markers, info windows, etc. */ }
+            <></>
+          </GoogleMap>
+        
+        </div>
       </div>
       ) : <></>;
       

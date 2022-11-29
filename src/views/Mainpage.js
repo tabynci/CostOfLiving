@@ -110,7 +110,7 @@ function Mainpage(props){
                <img alt="noimage" src={m} width="500px"></img>
                 </div>
                 <div className='mainpage'>
-                    <div className='Image-opacity'><img alt="noimage" src={u} style={{width:"100em"}}></img></div>
+                    <div className='Image-opacity'><img alt="noimage" src={u} style={{width:"90em"}}></img></div>
                     <div className='move-text'>
                     <label className='Mainpage-input-red'> City Name</label><br/>
                     <input type="text" className='Mainpage-input' value={city_name} onChange={handleSearchCity} placeholder="Enter City name"></input><br/>

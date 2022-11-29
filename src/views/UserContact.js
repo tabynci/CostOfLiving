@@ -36,8 +36,8 @@ async function deletUser (e){
     try{
         // console.log("${CostOfLivingAndExpenses}/Users/allcontact/"+e.target.id)
         var data =await axios.delete(APi.host+"/Users/allcontact/"+e.target.id)
-        console.log(data)
-        if(data.status === "200")
+        // console.log(data)
+        if(data.status == '200')
             setDelStatus('true');
     
     }catch(error){

@@ -1,6 +1,6 @@
 import React from "react";
 import logo from '../images/logo.jpg'
-import style from '../Styling/style.css'
+import style from '../css/style.css'
 import Search from "../views/Search";
 import {useState, useEffect} from 'react'
 
@@ -19,7 +19,7 @@ const [admin, setAdmin] =useState('n')
    if(sessionStorage.getItem("token") && admin.toUpperCase()=='N'){
    
     return (
-        <div className="container-fluid fluid-padding height">
+        <div className="container-fluid height">
         <nav className="navbar navbar-expand-lg bg height">
         <div className="container-fluid div-width shawdow">
           <a className="navbar-brand" href="#"><img src={logo} height="60px" width="120px" ></img></a>

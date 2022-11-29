@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBar from './Sidebar';
-import '../App.css';
+import '../css/style.css';
 import Users from '../views/Users';
 import UserContact from '../views/UserContact';
 import {Link} from 'react-router-dom'

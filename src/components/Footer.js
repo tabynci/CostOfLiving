@@ -1,4 +1,4 @@
-import style from '../Styling/style.css'
+import style from '../css/style.css'
 import {Navigate, Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 
@@ -17,7 +17,7 @@ function Footer(props){
   if(props.loggedIn=='true' && admin.toUpperCase()=='N'){
     console.log(props.loggedIn=='true' && admin.toUpperCase()=='N')
     return(
-      <div className="footer">
+      <div className="container-fluid height">
           {/* <ul>
           <span><Link to="/Contact">Contact</Link></span>
           <br></br>
