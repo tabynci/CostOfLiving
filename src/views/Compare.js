@@ -20,7 +20,7 @@ function Compare(props){
     const [city2Array, setCity2Array] =useState([])
     const [loading]=useState(false)
     const [currentPage, setCurrentPage]=useState(1);
-    const [categoriesPerPage]=useState(6);
+    const [categoriesPerPage]=useState(4);
     const [Status, setStatus]=useState('')
 
     //https://softwareengineering.stackexchange.com/questions/433640/in-javascript-how-is-awaiting-the-result-of-an-async-different-than-sync-calls
@@ -189,7 +189,7 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
                  {city1Array.map((city1)=><option value={city1.value}>{city1.label}</option>)}
                     </select>
                     </div>
-                    <div><p className="text">Foreign</p></div>
+                    <div><p className="text-left">Foreign</p></div>
                     <div>
                     <select className="dropdown" onChange={handlechange2}>
               
@@ -205,9 +205,11 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
                 </div>
                 </div>
                 
-           
-            <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
+           <div className='category-1'>
+           <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
             <PaginationCompare categoriesPerPage={categoriesPerPage} totalPosts={categories.length} paginate={paginate}/>
+           </div>
+            
 
             <div className="note">
                 <h4 >Note</h4>

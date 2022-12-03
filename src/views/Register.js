@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {Link } from 'react-router-dom';
 import axios from 'axios';
 import APi from './File';
+import { set } from 'lodash';
 
 function Register(props){
     const [username, setUsername] = useState('')
@@ -18,26 +19,65 @@ function Register(props){
     const [emailErr, setEmailErr] = useState(false);
     const [pwdError, setPwdError] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
+    const [ageError, setAgeError] = useState(false);
+   
 
     function handleUsernameInput(e){
         e.preventDefault()
         setError('')
+        setMessage('')
+        setUsernameError('')
+        setErrorUsername('')
+        setEmailErr('')
+        setErrorEmail('')
+        setAgeError('')
+        setErrorAge('')
+        setErrorPassword('')
+        setPwdError('')
         setUsername(e.target.value)
     }
     function handleEmailInput(e){
       
         e.preventDefault()
         setError('')
+        setMessage('')
+        setUsernameError('')
+        setErrorUsername('')
+        setEmailErr('')
+        setErrorEmail('')
+        setAgeError('')
+        setErrorAge('')
+        setErrorPassword('')
+        setPwdError('')
         setEmail(e.target.value)
+
     }
     function handleAgeInput(e){
         e.preventDefault()
         setError('')
+        setMessage('')
+        setUsernameError('')
+        setErrorUsername('')
+        setEmailErr('')
+        setErrorEmail('')
+        setAgeError('')
+        setErrorAge('')
+        setErrorPassword('')
+        setPwdError('')
         setAge(e.target.value)
     }
     function handlePasswordInput(e){
         e.preventDefault()
         setError('')
+        setMessage('')
+        setUsernameError('')
+        setErrorUsername('')
+        setEmailErr('')
+        setErrorEmail('')
+        setAgeError('')
+        setErrorAge('')
+        setErrorPassword('')
+        setPwdError('')
         setPassword(e.target.value)
     }
    const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
@@ -48,9 +88,14 @@ function Register(props){
 
    async function handleSubmit(e){
         e.preventDefault()
-
-        if(username!=="" && email!=="" && age!=="" ){
+console.log(age)
+        if(username!=="" && email!=="" && age!==""){
+         
             setError('');
+            setMessage('')
+          
+          
+
             if (!(validEmail.test(email))) {
                 console.log(!(validEmail.test(email)))
                 setEmailErr(true);
@@ -59,7 +104,9 @@ function Register(props){
                 setUsernameError(true);
              }else if (!(validPassword.test(password))) {
                 setPwdError(true);
-             }else{
+             }else if (age<18) {
+                setAgeError('user should be 18 years');
+              } else{
                 try{
                     // console.log("value" + APi.host);
                      await axios.post(APi.host + "/Users/register", {
@@ -70,15 +117,17 @@ function Register(props){
                  
                 }).then((response)=>{
                     console.log(response)
-                    setUsername("")
-                    setAge("")
-                    setEmail("")
-                    setPassword("")
-                    setError("")
-                    setEmailErr("")
-                    setErrorUsername("")
-                    setErrorPassword("")
+                   
+                    setUsernameError('')
+                    setErrorUsername('')
+                    setEmailErr('')
+                    setErrorEmail('')
+                    setAgeError('')
+                    setErrorAge('')
+                    setErrorPassword('')
+                    setPwdError('')
                     setMessage("Successfully Registered")
+
                  })
                  }catch(e) {
                     if(e.response.status === 400){
@@ -89,7 +138,7 @@ function Register(props){
                 }
              }
             
-        }else if(username==="" && password!=="" && email!=="" && age !==""){
+        }else if(username==="" && password!=="" && email!=="" && age !=="" ){
             setErrorUsername("Please enter username")
         } else if(username!=="" && password==="" && email!==""  && age !==""){
             setErrorPassword("Please enter password")
@@ -142,11 +191,11 @@ function Register(props){
                 <h4 style={{color:'red'}}> {errorEmail} </h4>
                 <h4 style={{color:'red'}}> {errorAge} </h4>
                 <h4 style={{color:'red'}}> {error} </h4>
-                {/* <h4 style={{color:'red'}}> {emailErr} </h4>
-                <h4 style={{color:'red'}}> {pwdError} </h4> */}
+                
                 {emailErr && <p style={{color:'red'}} >Your email is invalid</p>}
                 {pwdError && <p style={{color:'red'}}>Your password is invalid</p>}
                 {usernameError && <p style={{color:'red'}}>Your username is invlaid</p>}
+                {ageError && <p style={{color:'red'}}>You should be minimum of 18 years old</p>}
                     <h3>
                         Already Customer <span></span> <Link to="/login">Sign In</Link> 
                     </h3>

@@ -8,7 +8,7 @@ const ComparePost =({categories,loading,city1Prices, city2Prices, host, foreign 
         } 
 
     return(
-    <div>
+    <div className="div-table">
     <Table className="table" striped bordered hover>
         <thead>
             <tr className="cat-color">
