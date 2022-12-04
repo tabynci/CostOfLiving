@@ -41,7 +41,7 @@ return (
     <div>
       <Navbar loggedIn={loggedIn} admin={admin}/>
        <Routes>
-            <Route path = "/" element ={<Home token={token} location={location}/>} />
+            <Route path ="/CostOfLivingAndExpenses" element ={<Home token={token} location={location}/>} />
             <Route path ="/Mainpage" element={<Mainpage token={token}/>} />
             <Route path ="/Profile" element={<Profile token={token} />} />
             <Route path ="/Register" element={<Register />} />

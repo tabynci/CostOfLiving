@@ -9,7 +9,7 @@ const ComparePost =({categories,loading,city1Prices, city2Prices, host, foreign 
 
     return(
     <div className="div-table">
-    <Table className="table" striped bordered hover>
+    <Table className="table-compare" striped bordered hover>
         <thead>
             <tr className="cat-color">
                  <th className="categories">Categories</th>

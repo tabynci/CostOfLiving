@@ -55,10 +55,10 @@ useEffect(()=>{
 
     return(
        
-        <div id="App">
-        <SideBar />
         <div>
-            <h1 className="conatct-h">Conatct Users</h1>
+        <SideBar />
+        <div id="App" className='adminDiv'>
+            <h1 className="conatct-h">Contact Users</h1>
         <Table striped bordered hover>
                     <thead>
                         <tr className="user-color">

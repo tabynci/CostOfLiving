@@ -10,15 +10,11 @@ function Dashboard(props){
   console.log(props)
   props.token();
     return(
-      
-       <div id="App">
-      <div id="page-wrap">
-       <h3>Welcome to Admin Dashboard</h3>
-      <Users token={props.token}/>
-     
+      <div>
+       {/* <h3>Welcome to Admin Dashboard</h3> */}
+        <Users token={props.token}/>
       </div>
-    </div> 
-        
+      
     );
 }
 export default Dashboard;

@@ -117,7 +117,10 @@ console.log(age)
                  
                 }).then((response)=>{
                     console.log(response)
-                   
+                    setUsername('')
+                    setPassword('')
+                    setAge('')
+                    setEmail('')
                     setUsernameError('')
                     setErrorUsername('')
                     setEmailErr('')
@@ -193,8 +196,8 @@ console.log(age)
                 <h4 style={{color:'red'}}> {error} </h4>
                 
                 {emailErr && <p style={{color:'red'}} >Your email is invalid</p>}
-                {pwdError && <p style={{color:'red'}}>Your password is invalid</p>}
-                {usernameError && <p style={{color:'red'}}>Your username is invlaid</p>}
+                {pwdError && <p style={{color:'red'}}>password starts with alphabets, number or special character like *</p>}
+                {usernameError && <h4 style={{ color: 'red' }}>Your username is aplhanumeric and should always starts with alphabets and numbers</h4>}
                 {ageError && <p style={{color:'red'}}>You should be minimum of 18 years old</p>}
                     <h3>
                         Already Customer <span></span> <Link to="/login">Sign In</Link> 

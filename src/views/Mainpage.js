@@ -174,7 +174,7 @@ function Mainpage(props){
                 
                }
       }else{
-                <Navigate to="/" />
+                <Navigate to="/CostOfLivingAndExpenses" />
                }
         }
       

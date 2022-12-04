@@ -110,32 +110,34 @@ const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
               
         }
       return(
-        
-          <div className='contact-div'>
+        <div className='conatct-main-div'>
+        <div className='contact-div'>
            
-            <img src={contact} width="20%" />
-            
-           <header>
-            <form>
-            <h4 style={{color:'red'}}> {error} </h4>
-           <br/>
-           <label>UserName</label> <br/>
-           <input type="text" value={username} onChange={handleUsernameInput} />
-           <br/><h4 style={{color:'red'}}> {errorUsername} </h4> <h4 style={{color:'red'}}>{usernameError && <p>Your username is invlaid</p>}</h4>  
-           <label>Email</label> <br/>
-           <input type='email' value={email} onChange={handleEmailInput} />
-           <br/> <h4 style={{color:'red'}}> {errorMessage} </h4><h4 style={{color:'red'}}>  {emailErr && <p>Your email is invalid</p>} </h4>
-         <label>Message</label> <br/>
-           <textarea rows = "5" cols = "50" value={message} name = "description" onChange={handleMessageInput}>
-         </textarea> <br/><br></br>
-           <button onClick={handleSubmit}>Submit</button>
-           <h4 style={{color:'red'}}> {msg} </h4>
-            <h4 style={{color:'red'}}> {errorEmail} </h4>
-            <br/> <br />
-            </form>
-           </header>
+           <img src={contact} width="25%" />
            
-          </div>
+          <header>
+           <form>
+           <h4 style={{color:'red'}}> {error} </h4>
+          <br/>
+          <label>UserName</label> <br/>
+          <input type="text" value={username} onChange={handleUsernameInput} />
+          <br/><h4 style={{color:'red'}}> {errorUsername} </h4> <h4 style={{color:'red'}}>{usernameError && <p>Your username is invlaid</p>}</h4>  
+          <label>Email</label> <br/>
+          <input type='email' value={email} onChange={handleEmailInput} />
+          <br/> <h4 style={{color:'red'}}> {errorMessage} </h4><h4 style={{color:'red'}}>  {emailErr && <p>Your email is invalid</p>} </h4>
+        <label>Message</label> <br/>
+          <textarea rows = "5" cols = "50" value={message} name = "description" onChange={handleMessageInput}>
+        </textarea> <br/>
+          <button onClick={handleSubmit}>Submit</button>
+          <h4 style={{color:'red'}}> {msg} </h4>
+           <h4 style={{color:'red'}}> {errorEmail} </h4>
+           <br/> <br />
+           </form>
+          </header>
+          
+         </div>
+         
+        </div>
           
           
       )

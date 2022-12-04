@@ -5,7 +5,7 @@ sessionStorage.removeItem('token')
 sessionStorage.removeItem('admin')
 props.token();
   return(
-   <Navigate to="/" />
+   <Navigate to="/CostOfLivingAndExpenses" />
   )
  }
  export default Logout;

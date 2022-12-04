@@ -9,16 +9,16 @@ function SideBar(props){
   return (
     <div> 
         <Menu className='sidebar'>
-        <Link className="menu-item" to="/">
+        <Link className="menu-item menu-item-font" to="/CostOfLivingAndExpenses">
         Home
         </Link>
-        <Link className="menu-item" to="/Dashboard">
+        <Link className="menu-item menu-item-font" to="/Dashboard">
         Dashboard
         </Link>
-         <Link className="menu-item" to="/Users">
+         <Link className="menu-item menu-item-font" to="/Users">
         Users
       </Link>
-      <Link className="menu-item" to="/UserConatct">
+      <Link className="menu-item menu-item-font" to="/UserConatct">
        Contacts
       </Link>
       </Menu>

@@ -182,14 +182,14 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
             </div>
     
             <div className="compare">
-            <div><p className="text">Host</p></div>
+            <div><p className="text">Host: </p></div>
                     <div>
                     <select className="dropdown" onChange={handlechange1}>
                    <option value="⬇️ Select a city 1 ⬇️"> -- Select a city 1-- </option>
                  {city1Array.map((city1)=><option value={city1.value}>{city1.label}</option>)}
                     </select>
                     </div>
-                    <div><p className="text-left">Foreign</p></div>
+                    <div><p className="text-left">Foreign: </p></div>
                     <div>
                     <select className="dropdown" onChange={handlechange2}>
               
@@ -199,14 +199,14 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
                     </div>
                    
                 <div className="buttonCompare">
-                <button type="button" id="Compare" onClick={handleCompare} class="btn btn-success pull-left">Compare</button>
-                <button type="button" id="save" onClick={handleSave} class="btn btn-success pull-left">Save</button>
-                <button type="button" id="load" onClick={handleLoad} class="btn btn-success pull-left">Load</button>
+                    <button type="button" id="Compare" onClick={handleCompare} class="btn btn-success pull-left">Compare</button>
+                    <button type="button" id="save" onClick={handleSave} class="btn btn-success pull-left">Save</button>
+                    <button type="button" id="load" onClick={handleLoad} class="btn btn-success pull-left">Load</button>
                 </div>
                 </div>
                 
            <div className='category-1'>
-           <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
+            <ComparePost categories={currentCategory} loading={loading} city1Prices={city1Prices} city2Prices={city2Prices} host={host} foreign={foreign}/>
             <PaginationCompare categoriesPerPage={categoriesPerPage} totalPosts={categories.length} paginate={paginate}/>
            </div>
             

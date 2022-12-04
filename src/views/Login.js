@@ -115,7 +115,7 @@ setPwdError('')
              <label required-field>Password</label><span style={{ color: 'red' }}>*</span><br/>
              
              <input type='password' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
-             <br/> <br /> <h4 style={{color:'red'}}> {errorPassword} </h4> {pwdError && <h4 style={{ color: 'red' }}>Your password is invalid</h4>}
+             <br/> <br /> <h4 style={{color:'red'}}> {errorPassword} </h4> {pwdError && <h4 style={{ color: 'red' }}>password starts with alphabets, number or special character like *</h4>}
              <button className='logBtn' onClick={handleSubmit}>Login</button>
              <br/> 
              <h4 style={{color:'red'}}> {message} </h4>

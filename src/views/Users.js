@@ -72,9 +72,9 @@ useEffect(()=>{
 
     return(
        
-        <div id="App">
-        <SideBar />
         <div>
+        <SideBar />
+        <div id="App" className='adminDiv'>
             <h1 className="user-h">Users</h1>
         <Table striped bordered hover>
                     <thead>
