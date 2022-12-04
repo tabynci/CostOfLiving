@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CostOfLiving/static/css/main.8582be74.css",
-    "main.js": "/CostOfLiving/static/js/main.d7bd9606.js",
+    "main.css": "/CostOfLiving/static/css/main.fd46de7d.css",
+    "main.js": "/CostOfLiving/static/js/main.8c27d93a.js",
     "static/js/787.a2bf511c.chunk.js": "/CostOfLiving/static/js/787.a2bf511c.chunk.js",
     "static/media/u.jpg": "/CostOfLiving/static/media/u.dd530cf5453035a31aa5.jpg",
     "static/media/contact.jpeg": "/CostOfLiving/static/media/contact.137f307d2bca845e4793.jpeg",
@@ -11,12 +11,12 @@
     "static/media/ProfileImg.png": "/CostOfLiving/static/media/ProfileImg.69e085aa1bfa1b375839.png",
     "static/media/p.jpg": "/CostOfLiving/static/media/p.882b3b7592e6fca8e3cb.jpg",
     "index.html": "/CostOfLiving/index.html",
-    "main.8582be74.css.map": "/CostOfLiving/static/css/main.8582be74.css.map",
-    "main.d7bd9606.js.map": "/CostOfLiving/static/js/main.d7bd9606.js.map",
+    "main.fd46de7d.css.map": "/CostOfLiving/static/css/main.fd46de7d.css.map",
+    "main.8c27d93a.js.map": "/CostOfLiving/static/js/main.8c27d93a.js.map",
     "787.a2bf511c.chunk.js.map": "/CostOfLiving/static/js/787.a2bf511c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8582be74.css",
-    "static/js/main.d7bd9606.js"
+    "static/css/main.fd46de7d.css",
+    "static/js/main.8c27d93a.js"
   ]
 }
