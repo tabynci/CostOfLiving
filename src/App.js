@@ -16,6 +16,8 @@ import Dashboard from './components/Dashboard';
 import Users from './views/Users';
 import Compare from './views/Compare';
 import UserContact from './views/UserContact';
+import NotFound from './views/NotFound';
+import CurrencyConverter from './views/CurrencyConverter';
 
 
 function App() {
@@ -23,9 +25,11 @@ function App() {
   const [location, setLocation] = useState('')
   const [loggedIn, setLoggedIn] =useState('false')
   const [admin, setAdmin] =useState('n')
+  const [city, setCity]=useState('')
 
 
   const token=function(){
+    setCity(sessionStorage.getItem("city"));
   if(sessionStorage.getItem("token")){
     setLoggedIn(sessionStorage.getItem("token")?'true':'false')
     setAdmin(sessionStorage.getItem("admin"))
@@ -41,7 +45,7 @@ return (
     <div>
       <Navbar loggedIn={loggedIn} admin={admin}/>
        <Routes>
-            <Route path ="/CostOfLivingAndExpenses" element ={<Home token={token} location={location}/>} />
+            <Route path ="/CostOfLivingAndExpenses" element ={<Home token={token} location={city}/>} />
             <Route path ="/Mainpage" element={<Mainpage token={token}/>} />
             <Route path ="/Profile" element={<Profile token={token} />} />
             <Route path ="/Register" element={<Register />} />
@@ -49,10 +53,12 @@ return (
             <Route path ="/Logout" element={<Logout token={token}/>} />
             <Route path ="/About" element={<About />} />
             <Route path ="/Contact" element={<Contact />} />
+            <Route path ="/CurrencyConverter" element={<CurrencyConverter />} />
             <Route path ="/Compare" element={<Compare token={token} />} />
             <Route path ="/Dashboard" element={<Dashboard token={token} location={location}/>} />
             <Route path ="/Users" element={<Users token={token}/>} />
             <Route path ="/UserConatct" element={<UserContact token={token} />}/>
+            <Route path="*" element={<NotFound />} />
            </Routes>
        <Footer loggedIn={loggedIn} admin={admin} />
      </div>

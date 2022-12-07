@@ -4,6 +4,7 @@ import {Link } from 'react-router-dom';
 import axios from 'axios';
 import APi from './File';
 import { set } from 'lodash';
+import { Helmet } from 'react-helmet-async';
 
 function Register(props){
     const [username, setUsername] = useState('')
@@ -156,6 +157,7 @@ console.log(age)
     }
              return(
                 <div className='registerDiv'>
+                    <Helmet><title>Register</title></Helmet>
              <div className='register'>
                  
                   <header>
@@ -183,7 +185,7 @@ console.log(age)
                  <br/><br/>
                  </div>
                  <div>
-                 <button className="regBtn"  onClick={handleSubmit} >Register</button><br/><br/>
+                 <button id="reg-button" onClick={handleSubmit} >Register</button><br/><br/>
                 </div>
                  </form>
                  </header>

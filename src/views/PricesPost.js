@@ -21,8 +21,8 @@ Object.keys(catgroup).map((catgory) => (
       
         <li key={price.id} className="list-group-item no-paddning">
         <p className="Item"> Item Name: <span className="item-name">{price.item_name}</span></p>
-        <p className="Item"> Max:   <span className="item-name"><span className="dollar">&#36;</span>{price.max}</span></p>
-        <p className="Item"> Min:    <span className="item-name"><span className="dollar">&#36;</span>{price.min}</span></p>
+        <p className="Item"> Max:  <span className="item-name"><span className="dollar">&#36;</span>{price.max}</span></p>
+        <p className="Item"> Min:  <span className="item-name"><span className="dollar">&#36;</span>{price.min}</span></p>
         </li>
         </div>
         )

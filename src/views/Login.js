@@ -2,7 +2,8 @@ import {useState} from 'react'
 import axios from 'axios';
 import {Navigate, Link} from 'react-router-dom'
 import APi from './File';
-// import verifyToken, { auth } from '../auth/auth'
+import { Helmet } from 'react-helmet-async';
+
 
 function Login(props){
     
@@ -22,6 +23,7 @@ function Login(props){
       setError('');
       setUsername(e.target.value)
       }
+      
     function handlePasswordInput(e){
       e.preventDefault()
       setError('');
@@ -87,14 +89,14 @@ setPwdError('')
  
   // to check only for user login
   if(loggedIn === 'true' && admin.toUpperCase() === 'N'  ){
-    console.log(loggedIn +'09')
+    // console.log(loggedIn +'09')
       return(
           <Navigate to="/Mainpage" />
       )
   } 
   // to check only for admin login
   else if(loggedIn==='true' && admin==='y'){
-      console.log(loggedIn +'98')
+      // console.log(loggedIn +'98')
       return(
           <Navigate to="/Dashboard" />
       )
@@ -102,6 +104,7 @@ setPwdError('')
          
     return(
           <div className='loginDiv'>
+             <Helmet><title>Login</title></Helmet>
             <div className='login'>
              
              <header>
@@ -116,7 +119,7 @@ setPwdError('')
              
              <input type='password' value={password} onChange={handlePasswordInput} placeholder='Enter Password' required/>
              <br/> <br /> <h4 style={{color:'red'}}> {errorPassword} </h4> {pwdError && <h4 style={{ color: 'red' }}>password starts with alphabets, number or special character like *</h4>}
-             <button className='logBtn' onClick={handleSubmit}>Login</button>
+             <button  id="login-button" onClick={handleSubmit}>Login</button>
              <br/> 
              <h4 style={{color:'red'}}> {message} </h4>
              <h4 style={{color:'red'}}> {error} </h4>

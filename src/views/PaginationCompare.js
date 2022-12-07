@@ -1,11 +1,11 @@
 import React from "react";
  const PaginationCompare =({categoriesPerPage, totalPosts, paginate}) =>{
-    console.log(categoriesPerPage, totalPosts)
+    // console.log(categoriesPerPage, totalPosts)
 const pageNumbers=[];
     for (let i=1; i<=Math.ceil(totalPosts/categoriesPerPage); i++){
         pageNumbers.push(i);
     }
-    console.log(pageNumbers)
+    // console.log(pageNumbers)
     
     return(
         <div>

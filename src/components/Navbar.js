@@ -35,7 +35,10 @@ const [admin, setAdmin] =useState('n')
                 <Link className="nav-link active text-light item-font" aria-current="page" to="/Mainpage">MainPage</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-light item-font" aria-current="page" to="/Compare">Compare</Link>
+                <Link className="nav-link active  text-light item-font" aria-current="page" to="/Compare">Compare</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active text-light item-font" aria-current="page" to="/CurrencyConverter">CurrencyConverter</Link>
               </li>
               <li className="nav-item ">
                 <Link className="nav-link dasboard-padding active text-light item-font" aria-current="page" to="/Profile">Profile</Link>

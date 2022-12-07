@@ -1,6 +1,4 @@
-//  https://www.pngitem.com/middle/ixTTomR_city-town-bilding-bild-landscape-background-nature-hong/
-
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 import _ from 'lodash'
 import {Navigate} from 'react-router-dom'
@@ -10,7 +8,8 @@ import m from '../images/m.jpg';
 import u from '../images/u.jpg';
 import Pagination from './Pagination';
 import PricesPost from './PricesPost';
-
+import { Helmet } from 'react-helmet-async';
+           
 function Mainpage(props){
 
    
@@ -25,6 +24,7 @@ function Mainpage(props){
         const [Status, setStatus]=useState('')
         const [citynameError, setCitynameError]=useState('')
         const [countrynameError, setCountrynameError]=useState('')
+        const dataFetchedRef = useRef(false);
 
       function handleSearchCity(e){ //when user enters value this function is called out
           e.preventDefault()
@@ -55,7 +55,7 @@ function Mainpage(props){
       
         setLoading(true);
         setPrices(data.data.prices)
-        
+        console.log("check city")
         // console.log(data.data.prices)
    
         setLoading(false);
@@ -90,10 +90,7 @@ function Mainpage(props){
             setError("please enter all fields")
          }     
                
-           
-       
-        
- };
+     };
     
  useEffect(()=>{
     getCitiesPrices();
@@ -114,6 +111,7 @@ function Mainpage(props){
         return(
             
             <div className='main'>
+                <Helmet><title>Main Page</title></Helmet>
            
                 <p className='Mainpage-input-1'> Cost of Living and Expenses is an international database.</p>
                 <p className='Mainpage-input-2'>Information on seconds on :buying an apartment, Mortgage Costs, Transportaion, Salaries and Financing, Restaurants, Childcare.</p>
@@ -144,8 +142,8 @@ function Mainpage(props){
                )}else if(Status==='true'){
                 return(
                     <div className='main'>
-           
-                    <p className='Mainpage-input-1'> Cost of Living and Expenses is an international database.</p>
+                        <div className='image-main-1'> 
+                        <p className='Mainpage-input-1'> Cost of Living and Expenses is an international database.</p>
                     <p className='Mainpage-input-2'>Information on seconds on :buying an apartment, Mortgage Costs, Transportaion, Salaries and Financing, Restaurants, Childcare.</p>
                     
                             <div className='cat-div-1'>
@@ -162,6 +160,8 @@ function Mainpage(props){
                                     </div>
                             </div>
                         
+                        </div>
+                  
               
               
                 <div className='category'>                

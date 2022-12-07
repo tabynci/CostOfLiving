@@ -4,6 +4,7 @@ import axios from 'axios'
 import SideBar from '../components/Sidebar';
 import Table from 'react-bootstrap/Table';
 import APi from './File';
+import { Helmet } from "react-helmet-async";
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
 function UserContact(props){
 
@@ -56,6 +57,7 @@ useEffect(()=>{
     return(
        
         <div>
+            <Helmet><title>Conact Users</title></Helmet>
         <SideBar />
         <div id="App" className='adminDiv'>
             <h1 className="conatct-h">Contact Users</h1>
@@ -82,8 +84,7 @@ useEffect(()=>{
                         })
                     }
                     </tbody>
-                   
-                </Table>
+                    </Table>
                 </div>
        
         </div>

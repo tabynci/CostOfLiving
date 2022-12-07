@@ -19,7 +19,7 @@ function Cities(props){
                 'X-RapidAPI-Key': 'f183a42a81mshceb2974bf064e57p1137d8jsna883237c0e88'
             }
         })
-        // console.log(data)
+        // console.log("checkmain")
         setCityId(data.data.cities.city_id)
         setCityName(data.data.cities.city_name)
         // console.log(data.data.cities)

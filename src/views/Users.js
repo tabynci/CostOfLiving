@@ -5,6 +5,8 @@ import Table from 'react-bootstrap/Table';
 import { set } from "lodash";
 import e from "cors";
 import APi from './File';
+
+
 // Taken button https://vegibit.com/how-to-delete-an-item-from-an-array-in-react/#:~:text=React%20Key%20Concept&text=The%20delete%20button%20exists%20on,done%20in%20that%20component%20itself.
 function Users(props){
 
@@ -73,9 +75,12 @@ useEffect(()=>{
     return(
        
         <div>
+           
         <SideBar />
         <div id="App" className='adminDiv'>
+         
             <h1 className="user-h">Users</h1>
+        
         <Table striped bordered hover>
                     <thead>
                         <tr  className="user-color">

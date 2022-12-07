@@ -4,6 +4,8 @@ import axios from 'axios'
 import { update } from "lodash";
 import ProfileImg from '../images/ProfileImg.png'
 import APi from '../views/File';
+import { Helmet } from 'react-helmet-async';
+
 function Profile(props){
 
     const [username, setUsername] = useState('')
@@ -96,15 +98,17 @@ if(sessionStorage.getItem("token")){
 return (
 
     <div className="ProfileDiv">
+       <Helmet><title>Profile</title></Helmet>
     <div className="Profile">
         <p className="user-profile">User profile</p>
         <div className="profile-logo">
             
-               <img src={ProfileImg} width="10%" />
+               <img src={ProfileImg} width="8%" />
         </div>
 
          <div className="DasbordUser">
-            
+         <form>
+        <fieldset>
             <label className="input-padding">UserName</label><br></br>
             <input type="text" className="input-padding" value={username} onChange={handleUsernameInput} ></input><br></br>
             <label>email</label><br></br>
@@ -112,12 +116,15 @@ return (
             <label>Age</label><br></br>
             <input type="text" value={age} onChange={handleAgeInput}></input><br></br>
             <label>Password</label><br></br>
-            <input type="text" value={password} onChange={handlePasswordInput}></input><br></br>
+            <input type='password'  value={password} onChange={handlePasswordInput} placeholder='Enter Password' required></input><br></br>
+            
              <label>Confirm Password</label><br></br>
-            <input type="text" value={ConfirmPassword} onChange={handleConfirmPasswordInput}></input><br></br>
+            <input type='password'  value={ConfirmPassword} onChange={handleConfirmPasswordInput} placeholder='Enter Confirm Password' required></input><br></br>
             <br></br>
             <h4 style={{color:'green'}}> {msg} </h4>
             <button className="profile-button" onClick={handleUpdate}>Update</button>
+            </fieldset>
+            </form>
             </div>
             
         </div>

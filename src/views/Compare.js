@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import ComparePost from "./ComparePost";
 import PaginationCompare from "./PaginationCompare";
 import APi from './File';
-
+import { Helmet } from 'react-helmet-async';
 
 function Compare(props){
     const [host, setHost] = useState('')
@@ -177,6 +177,7 @@ const paginate =(pageNumber)=> setCurrentPage(pageNumber);
    if(sessionStorage.getItem("token")){
     return(
         <div className="compare-div">
+              <Helmet><title>Compare</title></Helmet>
             <div>
                 <p className="compareHeading">Compare Data of two cities</p>
             </div>
