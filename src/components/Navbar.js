@@ -1,11 +1,10 @@
 import React from "react";
 import logo from '../images/logo.jpg'
-import style from '../css/style.css'
 import Search from "../views/Search";
 import {useState, useEffect} from 'react'
 
 
-import {Navigate, Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 function Navbar(props) {
 // console.log(props)
 const [loggedIn, setLoggedIn] =useState('false')
@@ -16,13 +15,13 @@ const [admin, setAdmin] =useState('n')
     setAdmin(props.admin)
  }, [props.loggedIn])
  
-   if(sessionStorage.getItem("token") && admin.toUpperCase()=='N'){
+   if(sessionStorage.getItem("token") && admin.toUpperCase()==='N'){
    
     return (
         <div className="container-fluid height">
         <nav className="navbar navbar-expand-lg bg height">
         <div className="container-fluid div-width shawdow">
-          <a className="navbar-brand" href="#"><img src={logo} height="60px" width="120px" ></img></a>
+          <a className="navbar-brand" href="#"><img src={logo} alt="logo" height="60px" width="120px" ></img></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -54,14 +53,14 @@ const [admin, setAdmin] =useState('n')
       </nav>
           </div>
         );
-} else if(sessionStorage.getItem("admin") && admin.toUpperCase()=='Y'){
+} else if(sessionStorage.getItem("admin") && admin.toUpperCase()==='Y'){
   
    
     return(
       <div className="container-fluid fluid-padding height">
       <nav className="navbar navbar-expand-lg bg height">
       <div className="container-fluid div-width shawdow">
-        <a className="navbar-brand logoIMG" href="#"><img src={logo} height="60px" width="120px" ></img></a>
+        <a className="navbar-brand logoIMG" href="#"><img src={logo} alt="logo" height="60px" width="120px" ></img></a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -87,7 +86,7 @@ const [admin, setAdmin] =useState('n')
           <div className="container-fluid fluid-padding height">
         <nav className="navbar navbar-expand-lg bg height">
         <div className="container-fluid div-width shawdow">
-          <a className="navbar-brand" href="#"><img src={logo} height="60px" width="120px"></img></a>
+          <a className="navbar-brand" href="#"><img src={logo} alt="logo" height="60px" width="120px"></img></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

@@ -103,7 +103,7 @@ return (
         <p className="user-profile">User profile</p>
         <div className="profile-logo">
             
-               <img src={ProfileImg} width="8%" />
+               <img src={ProfileImg} alt="profileImage" width="8%" />
         </div>
 
          <div className="DasbordUser">

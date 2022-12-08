@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import SideBar from '../components/Sidebar';
 import Table from 'react-bootstrap/Table';
-import { set } from "lodash";
-import e from "cors";
 import APi from './File';
 
 
@@ -14,7 +12,7 @@ function Users(props){
 const [err, setErr]=useState('not connected');
 
 const [result, setResult]=useState([])
-const [users, setUsers]=useState([])
+// const [users, setUsers]=useState([])
 const [delStatus, setDelStatus]=useState('')
 
 // const [id, setId]=useState('')

@@ -16,13 +16,12 @@ import Dashboard from './components/Dashboard';
 import Users from './views/Users';
 import Compare from './views/Compare';
 import UserContact from './views/UserContact';
-import NotFound from './views/NotFound';
 import CurrencyConverter from './views/CurrencyConverter';
 
 
 function App() {
 
-  const [location, setLocation] = useState('')
+  const [location] = useState('')
   const [loggedIn, setLoggedIn] =useState('false')
   const [admin, setAdmin] =useState('n')
   const [city, setCity]=useState('')
@@ -58,7 +57,6 @@ return (
             <Route path ="/Dashboard" element={<Dashboard token={token} location={location}/>} />
             <Route path ="/Users" element={<Users token={token}/>} />
             <Route path ="/UserConatct" element={<UserContact token={token} />}/>
-            <Route path="*" element={<NotFound />} />
            </Routes>
        <Footer loggedIn={loggedIn} admin={admin} />
      </div>

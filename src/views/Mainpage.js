@@ -117,7 +117,7 @@ function Mainpage(props){
                 <p className='Mainpage-input-2'>Information on seconds on :buying an apartment, Mortgage Costs, Transportaion, Salaries and Financing, Restaurants, Childcare.</p>
                 
             <div className='image-main'>
-               <img alt="noimage"  src={m} width="500px"></img>
+               <img alt="Mapimage"  src={m}  width="500px"></img>
                 </div>
                 <div className='mainpage'>
                     <div className='Image-opacity'>

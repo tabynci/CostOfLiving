@@ -113,7 +113,7 @@ const validEmail = new RegExp( '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
         <div className='conatct-main-div'>
         <div className='contact-div'>
            
-           <img src={contact} width="25%" />
+           <img src={contact} width="23%" />
            
           <header>
            <form>

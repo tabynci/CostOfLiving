@@ -1,3 +1,4 @@
+
 import style from '../css/style.css'
 import {Navigate, Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
@@ -22,7 +23,6 @@ function Footer(props){
           <span><Link to="/Contact">Contact</Link></span>
           <br></br>
           <span><Link to="/About">About</Link></span>
-
           </ul> */}
 
 <div className="main-footer">
@@ -31,10 +31,10 @@ function Footer(props){
         {/* Column1 address */}
         <div className="col">
           <h2>Cost Of living and Expenses</h2>
-          <h3 className="list-unstyled">
+          <ui className="list-unstyled">
             <li>LEIXLIP, IRELAND</li>
             <li>123 Streeet South North</li>
-          </h3>
+          </ui>
         </div>
         {/* Column2 */}
         <div className="col">

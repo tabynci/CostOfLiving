@@ -1,4 +1,4 @@
 const api={
-    host:"https://localhost:3005"
+    host:"https://3.252.193.112:3005"
 }
 export default api;

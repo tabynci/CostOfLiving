@@ -36,16 +36,13 @@ background-color: rgb(160, 168, 193);
   .page{
     padding-left: 20px;
   }
-
-
-
-  .footer{
+.footer{
     background-color: rgb(213, 213, 24);
-    
-}
+   
+   }
 .admin-footer{
     background-color: #f5efc9;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -56,11 +53,8 @@ background-color: rgb(160, 168, 193);
     padding: 2em;
     position: relative;
     bottom: 0;
-    /* width: 100%; */
-    /* display: flex; */
+   display: flex;
   }
-
-
 .bg{
     background-color: black;
 }
@@ -94,21 +88,7 @@ background-color: rgb(160, 168, 193);
 .dasboard-padding{
     margin-left: 47em;
 }
-/* @media (min-width: 768px) {
-  
-  }
-  @media (min-width: 992px) {
-    .container {
-      width: 970px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .container {
-      width: 1170px;
-    }
-  }  */
 
-  
 .logoIMG{
     padding-left: 100px;
     
@@ -149,22 +129,6 @@ background-color: rgb(160, 168, 193);
     
     padding-top: 20px;
 }
-
-/* .forgotPassword{
-    background-color: rgb(137, 225, 225);
-    text-align: center;
-    font-size: 20px;
-    font-weight: bolder;
-    height: 600px;
-    width: 400px;
-    border-radius: 20px;
-    margin-left: 30em;
-   } */
-
-  /* .forgotDiv{
-    background-color: antiquewhite;
-    height: 850px;
-  } */
 
 .loginDiv{
     background-color: rgb(205, 234, 245);
@@ -284,22 +248,17 @@ margin-bottom: 200px;
 }
 
 #save{
-    /* margin-left: 7em;  */
-    /* margin-right: 60px; */
-    width: 100px;
+ width: 100px;
     height: 40px;
     border-radius: 1.5em;
    background-color: black;
    color: rgb(255, 166, 0);
-   /* padding-bottom: 2em; */
    font-size: 16px;
     font-weight: bolder;
   margin-left: 20px;
 }
 #load{
-    /* margin-right: 30em; */
-    /* padding-bottom: 2em; */
-    width: 100px;
+  width: 100px;
     height: 40px;
     background-color:black;
     color: rgb(255, 166, 0);
@@ -310,9 +269,7 @@ margin-bottom: 200px;
 }
 #Compare{
     width: 100px;
-    /* padding-bottom: 2em; */
     height: 40px;
-    /* margin-bottom: 2px; */
     background-color:black;
     color: rgb(255, 166, 0);
     font-size: 16px;
@@ -486,7 +443,6 @@ padding-left: 15em;
     font-style: normal;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
-    /* text-align: center; */
     font-size: 18px;
     padding-bottom: 20px;
 
@@ -518,9 +474,6 @@ padding-left: 15em;
     text-align: center;
     font-weight: bolder;
 }
-/* .cat-background{
-    background-color: black;
-} */
 .cat-color{
     background-color: black;
 }
@@ -589,8 +542,6 @@ font-style: italic;
         padding-left:6em;
         padding-right:6em;
         padding-bottom: 20px;
-   
-       
     }
   
     .div-paragragp{
@@ -635,10 +586,6 @@ font-style: italic;
     .user-color{
         background-color: black;
     }
-    /* #page{
-        margin-left:20px ;
-        
-    } */
     .pagination-side{
        padding-left: 3em;
     }
@@ -753,8 +700,6 @@ body {
     padding-right: 3em;
 }
 
-
-/* Currency */
 .App-converter{
    
     width: 100%;
@@ -762,8 +707,7 @@ body {
     align-items: center;
     flex-direction: column;
     padding-top: 50px;
-   
-    background-color: rgb(205, 234, 245);
+   background-color: rgb(205, 234, 245);
     height: 615px;
   }
   .heading{
