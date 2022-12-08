@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CostOfLivingAndExpenses/static/css/main.72fcb1b3.css",
-    "main.js": "/CostOfLivingAndExpenses/static/js/main.f68acf00.js",
+    "main.js": "/CostOfLivingAndExpenses/static/js/main.f33145e4.js",
     "static/js/787.a2bf511c.chunk.js": "/CostOfLivingAndExpenses/static/js/787.a2bf511c.chunk.js",
     "static/media/u.jpg": "/CostOfLivingAndExpenses/static/media/u.dd530cf5453035a31aa5.jpg",
     "static/media/contact.jpeg": "/CostOfLivingAndExpenses/static/media/contact.137f307d2bca845e4793.jpeg",
@@ -12,11 +12,11 @@
     "static/media/p.jpg": "/CostOfLivingAndExpenses/static/media/p.882b3b7592e6fca8e3cb.jpg",
     "index.html": "/CostOfLivingAndExpenses/index.html",
     "main.72fcb1b3.css.map": "/CostOfLivingAndExpenses/static/css/main.72fcb1b3.css.map",
-    "main.f68acf00.js.map": "/CostOfLivingAndExpenses/static/js/main.f68acf00.js.map",
+    "main.f33145e4.js.map": "/CostOfLivingAndExpenses/static/js/main.f33145e4.js.map",
     "787.a2bf511c.chunk.js.map": "/CostOfLivingAndExpenses/static/js/787.a2bf511c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.72fcb1b3.css",
-    "static/js/main.f68acf00.js"
+    "static/js/main.f33145e4.js"
   ]
 }
